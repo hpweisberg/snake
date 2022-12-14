@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box
+}
+
+/* The Universal Selector */
+*, /* All elements*/
+*::before, /* All ::before pseudo-elements */
+*::after { /* All ::after pseudo-elements */
+  /* height & width will now include border & padding by default
+     but can be over-ridden as needed */
+  box-sizing: inherit;
+}
+
+body {
+  background-color: gray;
+/* Use a system font, if none are available use an available sans-sarif   font */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  /* margin: 0; */
+}
+
+.game-container {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  /* grid-template-columns: 100px 100px 100px ;
+  grid-template-rows: 100px 100px 100px 20px; */
+  justify-content: center;
+  border: 1px solid rgb(255, 13, 13);
+  background-color: rgb(18, 22, 48);
+  box-shadow: black 10px 10px 70px;
+}
+
+.player {
+  width: 15px;
+  height: 15px;
+  background-color: yellowgreen;
+  border: 1px solid greenyellow;
+}
