@@ -2,10 +2,12 @@
 
 
 /*-------------------------------- Variables --------------------------------*/
+
 let snake = {
   head: 1, 
   body: [],
 }
+
 let gameBoard = [ // X-axis - 17 / play area 15
                     // Y-axis - 14 / play area 12
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -32,10 +34,12 @@ let leftWall = 2
 let score = 0
 let win, lose, pause
 
-
+let columnCounter = 0
+let rowCounter = -1
 
 
 /*------------------------ Cached Element References ------------------------*/
+const boardEl = document.querySelector('.board')
 const playerEl = document.querySelector('.player')
 const foodEl = document.querySelector('.food')
 const controllerEl = document.querySelector('.controller')
@@ -74,7 +78,7 @@ function init(){
     head: 1,
     body: [],
   }
-  board = null
+  // boardEl = null
   score = 0
   render()
 }
@@ -83,6 +87,24 @@ function render(){
   updateGameBoard()
   updateScoreBoard()
 }
+
+for (let i = 0; i < 255; i++){
+  let sqrEl = document.createElement('div')
+  sqrEl.classList.add('sqr')
+  sqrEl.id = (i)
+  rowCounter++
+  if (i % 16 === 0){
+    columnCounter++
+  }
+  if (rowCounter === 16){
+    rowCounter = 0
+  }
+  console.log(columnCounter, rowCounter)
+  sqrEl.style.gridColumn = rowCounter 
+  sqrEl.style.gridRow =  columnCounter
+  boardEl.appendChild(sqrEl)
+}
+
 
 function handleMovment(){
   if(setTimeout){
