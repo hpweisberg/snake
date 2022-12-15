@@ -1,6 +1,12 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const gameBoard = [ // X-axis - 17 / play area 15
+
+/*-------------------------------- Variables --------------------------------*/
+let snake = {
+  head: 1, 
+  body: [],
+}
+let gameBoard = [ // X-axis - 17 / play area 15
                     // Y-axis - 14 / play area 12
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
   [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
@@ -18,11 +24,6 @@ const gameBoard = [ // X-axis - 17 / play area 15
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ]
 
-/*-------------------------------- Variables --------------------------------*/
-let snake = {
-  head: 1, 
-  body: [],
-}
 let food = 100
 let topWall = 2
 let rightWall = 2
@@ -54,6 +55,8 @@ const scoreEl = document.querySelector('.score')
 
 controllerBtnUp.addEventListener('click', function(evt){
   moveUp()
+  checkForSnakeBody()
+  checkForWall()
   checkForFood()
   updateScoreBoard()
   render()
@@ -81,8 +84,20 @@ function render(){
   updateScoreBoard()
 }
 
+function handleMovment(){
+  if(setTimeout){
+    console.log('time out, move in same direction')
+  } else{
+    moveUp()
+    moveRight()
+    moveDown()
+    moveLeft()
+  }
+  render()
+}
+
 function moveUp(){
-  // playerEl.
+  playerEl.
   console.log('I want to move up')
 }
 function moveRight(){
@@ -96,6 +111,14 @@ function moveDown(){
 function moveLeft(){
   // playerEl.
   console.log('I want to move left')
+}
+
+function checkForSnakeBody(){
+  console.log('is there a snake body here?')
+}
+
+function checkForWall(){
+  console.log('is there a wall here?')
 }
 
 function checkForFood(){
