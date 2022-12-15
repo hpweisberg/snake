@@ -7,6 +7,7 @@
 let snake = {
   head: 1, 
   body: [],
+  direction: 'right'
 }
 
 let gameBoard = [ // X-axis - 17 / play area 15
@@ -26,6 +27,9 @@ let gameBoard = [ // X-axis - 17 / play area 15
   [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ]
+// playerEl =
+// grid-column-start: 8;
+// grid-row-start: 8;
 
 let food = 100
 let topWall = 2
@@ -51,6 +55,7 @@ const controllerBtnLeft = document.querySelector('.left-btn')
 const startBtn = document.querySelector('.start-btn')
 const resetBtn = document.querySelector('.reset-btn')
 const scoreEl = document.querySelector('.score')
+const grid = document.getElementsByClassName('sqr')
 // console.log(typeof controllerBtnUp)
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -60,11 +65,11 @@ const scoreEl = document.querySelector('.score')
 
 controllerBtnUp.addEventListener('click', function(evt){
   moveUp()
-  checkForSnakeBody()
-  checkForWall()
-  checkForFood()
-  updateScoreBoard()
-  render()
+  // checkForSnakeBody()
+  // checkForWall()
+  // checkForFood()
+  // updateScoreBoard()
+  // render()
 })
 
 // playerEl.for(function(evt){
@@ -73,7 +78,7 @@ controllerBtnUp.addEventListener('click', function(evt){
 
 /*-------------------------------- Functions --------------------------------*/
 init()
-
+console.log(playerEl.getAttribute('id'))
 function init(){
   snake = {
     head: 1,
@@ -85,25 +90,27 @@ function init(){
 }
 
 function render(){
+  createGameBoard()
   updateGameBoard()
   updateScoreBoard()
 }
-
-for (let i = 0; i < 256; i++){
-  let sqrEl = document.createElement('div')
-  sqrEl.classList.add('sqr')
-  sqrEl.id = (i)
-  rowCounter++
-  if (i % 16 === 0){
-    columnCounter++
+function createGameBoard(){
+  for (let i = 0; i < 256; i++){
+    let sqrEl = document.createElement('div')
+    sqrEl.classList.add('sqr')
+    sqrEl.id = (i)
+    rowCounter++
+    if (i % 16 === 0){
+      columnCounter++
+    }
+    if (rowCounter === 16){
+      rowCounter = 0
+    }
+    // console.log(columnCounter, rowCounter)
+    sqrEl.style.gridColumn = rowCounter 
+    sqrEl.style.gridRow =  columnCounter
+    boardEl.appendChild(sqrEl)
   }
-  if (rowCounter === 16){
-    rowCounter = 0
-  }
-  console.log(columnCounter, rowCounter)
-  sqrEl.style.gridColumn = rowCounter 
-  sqrEl.style.gridRow =  columnCounter
-  boardEl.appendChild(sqrEl)
 }
 
 function handleMovment(){
@@ -119,8 +126,13 @@ function handleMovment(){
 }
 
 function moveUp(){
-  playerEl.
-  console.log('I want to move up')
+  // playerEl.style.gridColumn = ((playerEl.style.gridColumn) - 1)
+  // playerEl.style.grid = playerEl.style.grid[16]
+  // playerEl.getAttribute('id')
+  console.log(playerEl.getAttribute('id'))
+  playerEl.style.gridRowStart--
+  // console.log('I want to move up')
+  // console.log(playerEl.style)
 }
 function moveRight(){
   // playerEl.
