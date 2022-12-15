@@ -19,15 +19,15 @@ const gameBoard = [ // X-axis - 17 / play area 15
 ]
 
 /*-------------------------------- Variables --------------------------------*/
-const snake = {
+let snake = {
   head: 1, 
   body: [],
 }
 let food = 100
-let topWall = 1
-let rightWall = 1
-let bottomWall = 1
-let leftWall = 1
+let topWall = 2
+let rightWall = 2
+let bottomWall = 2
+let leftWall = 2
 let score = 0
 let win, lose, pause
 
@@ -69,7 +69,7 @@ init()
 function init(){
   snake = {
     head: 1,
-    body: 2,
+    body: [],
   }
   board = null
   score = 0
@@ -100,4 +100,12 @@ function moveLeft(){
 
 function checkForFood(){
   console.log('is there food here?')
+}
+
+function updateGameBoard(){
+  console.log('game board is updated')
+}
+
+function updateScoreBoard(){
+  console.log('scoreboard is updated')
 }
