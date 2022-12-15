@@ -1,3 +1,4 @@
+
 /*-------------------------------- Constants --------------------------------*/
 
 
@@ -35,7 +36,7 @@ let score = 0
 let win, lose, pause
 
 let columnCounter = 0
-let rowCounter = -1
+let rowCounter = 0
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -88,7 +89,7 @@ function render(){
   updateScoreBoard()
 }
 
-for (let i = 0; i < 255; i++){
+for (let i = 0; i < 256; i++){
   let sqrEl = document.createElement('div')
   sqrEl.classList.add('sqr')
   sqrEl.id = (i)
@@ -104,7 +105,6 @@ for (let i = 0; i < 255; i++){
   sqrEl.style.gridRow =  columnCounter
   boardEl.appendChild(sqrEl)
 }
-
 
 function handleMovment(){
   if(setTimeout){
