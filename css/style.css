@@ -24,6 +24,16 @@ body {
   justify-content: center;
 }
 
+/* .board {
+  background-color: rgb(18, 22, 48);
+  display: grid;
+  grid-template-columns: repeat(16,1fr);
+  grid-template-rows: repeat(16, 1fr);
+  height: 400px;
+  width: 400px;
+  border: 1px solid rgb(255, 8, 8);
+} */
+
 .board {
   display: grid;
   grid-template-columns: auto-repeate(16, 11vmin);
@@ -33,6 +43,7 @@ body {
   /* grid-gap: 0vmin; */
   width: 400px;
   height: 400px;
+  position: relative;
   /* grid-template-columns: 100px 100px 100px ;
   grid-template-rows: 100px 100px 100px 20px; */
   /* justify-content: center; */
@@ -60,6 +71,8 @@ body {
   border: 1px solid greenyellow;
   display: inline-block;
   position: absolute;
+  left: 0;
+  top: 0;
   /* grid-column-start: 8;
   grid-row-start: 8; */
 }

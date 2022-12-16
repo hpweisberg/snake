@@ -4,12 +4,12 @@
 
 /*-------------------------------- Variables --------------------------------*/
 
-let snake = {
-  head: 1, 
-  body: [],
-  direction: 'right',
+// let snake = {
+//   head: 1, 
+//   body: [],
+//   direction: 'right',
   
-}
+// }
 
 
 // playerEl =
@@ -17,7 +17,13 @@ let snake = {
 // grid-row-start: 8;
 
 
-let board
+let board = [
+  {
+    snakeHead: true,
+    snakeBody: false,
+    food: false,
+  }
+]
 let food = 100
 let topWall = 2
 let rightWall = 2
@@ -64,7 +70,7 @@ const grid = document.getElementsByClassName('sqr')
 
 const clickSqr = boardEl.addEventListener('click', evt => {
   console.log(evt.target.id)
-  console.log(sqrEl.target.id)
+  // console.log(sqrEl.target.id)
 })
 
 controllerBtnRight.addEventListener('click', function(evt){
@@ -98,6 +104,7 @@ function init(){
   // makeSnake()
   // boardEl = null
   // snakeEl.setAttribute('id')
+  // snakeEl.setAttribute.style.left = 
   score = 0
   render()
 }
@@ -124,22 +131,22 @@ function render(){
 
 
 function createGameBoard(){
-  for (let i = 0; i < 256; i++){
-    sqrEl = document.createElement('div')
-    sqrEl.classList.add('sqr')
-    sqrEl.id = (i)
-    rowCounter++
-    if (i % 16 === 0){
-      columnCounter++
-    }
-    if (rowCounter === 16){
-      rowCounter = 0
-    }
-    // console.log(columnCounter, rowCounter)
-    sqrEl.style.gridColumn = rowCounter 
-    sqrEl.style.gridRow = columnCounter
-    boardEl.appendChild(sqrEl)
-  }
+  // for (let i = 0; i < 256; i++){
+  //   sqrEl = document.createElement('div')
+  //   sqrEl.classList.add('sqr')
+  //   sqrEl.id = (i)
+  //   rowCounter++
+  //   if (i % 16 === 0){
+  //     columnCounter++
+  //   }
+  //   if (rowCounter === 16){
+  //     rowCounter = 0
+  //   }
+  //   // console.log(columnCounter, rowCounter)
+  //   sqrEl.style.gridColumn = rowCounter 
+  //   sqrEl.style.gridRow = columnCounter
+  //   boardEl.appendChild(sqrEl)
+  // }
 }
 
 // function makeSnake(){
@@ -177,9 +184,9 @@ function createGameBoard(){
 
 function moveRight(evt){
   // snakeEl.style.id = boardEl.sqrEl.id++
-  snakeEl.setAttribute.id = sqrEl.id
+  (snakeEl.style.left = "-25px")
   //  = evt.target.id
-  console.log(snakeEl.target.id)
+  // console.log(snakeEl.target.id)
   console.log('I want to move right')
 }
 function moveDown(){
