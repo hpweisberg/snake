@@ -53,11 +53,13 @@ body {
 }
 
 
-.player {
+.snake {
   width: 25px;
   height: 25px;
   background-color: yellowgreen;
   border: 1px solid greenyellow;
+  display: inline-block;
+  position: absolute;
   /* grid-column-start: 8;
   grid-row-start: 8; */
 }
