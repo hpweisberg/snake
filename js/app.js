@@ -18,6 +18,7 @@
 
 
 let board = [
+  boardSqr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   {
     snakeHead: true,
     snakeBody: false,
