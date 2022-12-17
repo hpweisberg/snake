@@ -24,21 +24,32 @@ let columnCounter = 0
 let rowCounter = 0
 
 /*---------------------------- Variables (state) ----------------------------*/
-let borad
+let board
 let snakeHeadDirection
 let foodItem
 
 
 /*------------------------ Cached Element References ------------------------*/
-snakeEl = document.querySelector(('.snake'))
+snakeEl = document.querySelector('.snake')
 boardEl = document.querySelector('.board')
+rightBtn = document.querySelector('.right-btn')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-function init(){
-  createGameBoard()
-}
-init()
+rightBtn.addEventListener('click', moveRight)
 
 /*-------------------------------- Functions --------------------------------*/
 
+function init(){
+  createGameBoard()
+  board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+}
+init()
+
+function moveRight(){
+  currentSnakeHead = board.indexOf(1)
+  board.splice(currentSnakeHead, 1, 0, 1)
+  console.log(board.indexOf(1))
+  console.log(board)
+  // console.log(board.indexOf(1))
+}
