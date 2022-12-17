@@ -6,17 +6,17 @@
 
 
 // let board = 
-let board = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-let snakeHead = true
-let snakeBody = false
-let food = false
+let board
+let snakeHead
+let snakeBody
+let food
   
-let foodBank = 250
+let foodBank
 let topWall = 2
 let rightWall = 2
 let bottomWall = 2
 let leftWall = 2
-let score = 0
+let score
 let win, lose, pause, loction
 
 let columnCounter = 0
@@ -70,10 +70,14 @@ controllerBtnRight.addEventListener('click', function(evt){
 /*-------------------------------- Functions --------------------------------*/
 // console.log(snakeEl.getAttribute('id'))
 function init(){
-  // createGameBoard()
-  // makeSnake()
+  board = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  snakeHead = 1
+  snakeBody = false
+  food = false
+  foodBank = 250
 
   score = 0
+  createGameBoard()
   render()
 }
 init()
@@ -81,7 +85,6 @@ init()
 // let snakeBoardLocation = snakeEl.target.sqrEl
 
 function render(){
-  createGameBoard()
   updateGameBoard()
   updateScoreBoard()
 }
@@ -143,7 +146,7 @@ function handleMovment(evt){
 // }
 
 function moveRight(idx){
-  board.splice(idx, 1, 1)
+  board.splice(idx, 1, snakeHead)
   // console.log(snakeEl.target.id)
   console.log('I want to move right')
 }
@@ -171,7 +174,8 @@ function checkForFood(){
 function updateGameBoard(){
   board.forEach((sqrEl, idx) => {
     if (moveRight()){
-      snakeHead[idx]++ }
+      board.sqrEl.snakeHead[idx] }
+      console.log(board[snakeHead])
     }
   )
   
