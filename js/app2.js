@@ -19,7 +19,7 @@ function createGameBoard(){
   }
 }
 // createGameBoard()
-
+// let snakeHead = snakeEl
 let columnCounter = 0
 let rowCounter = 0
 
@@ -30,26 +30,60 @@ let foodItem
 
 
 /*------------------------ Cached Element References ------------------------*/
-snakeEl = document.querySelector('.snake')
-boardEl = document.querySelector('.board')
-rightBtn = document.querySelector('.right-btn')
+let snakeEl = document.querySelector('.snake')
+const boardEl = document.querySelector('.board')
+const sqrEls = document.querySelectorAll('.sqr')
+const controllerEl = document.querySelector('.controller')
+const rightBtn = document.querySelector('.right-btn')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
+// sqrEls.forEach(function(sqr){
+//   controllerEl.addEventListener('click', handleClick)
+// })
+
+// controllerEl.addEventListener('click', function(evt){
+//   handleClick(evt.target)
+// })
 rightBtn.addEventListener('click', moveRight)
 
 /*-------------------------------- Functions --------------------------------*/
 
 function init(){
-  createGameBoard()
+  createGameBoard() 
   board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+  snakeHead = board.indexOf(1)
+  console.log(snakeEl)
 }
 init()
 
+function render(){
+  updateGameBoard()
+}
+
+function updateGameBoard(){
+  
+  sqrEls.forEach((element, index) => {
+    if (element === 1){
+      sqrEls[index].classList.add('.snake')
+    }
+  });
+  // console.log(snakeEl)
+}
+
+// function handleClick(evt){
+//   const sqIdx = snakeEl.target.id
+// }
+
 function moveRight(){
-  currentSnakeHead = board.indexOf(1)
-  board.splice(currentSnakeHead, 1, 0, 1)
-  console.log(board.indexOf(1))
+  snakeEl = board.indexOf(1)
+  board.splice(snakeEl, 1, 0, 1)
+  board.pop()
   console.log(board)
   // console.log(board.indexOf(1))
+  render()
+  console.log(board.indexOf(1))
 }
+// console.log(board.indexOf(1))
+
+console.log(snakeEl)

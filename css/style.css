@@ -71,8 +71,8 @@ body {
   border: 1px solid greenyellow;
   display: inline-block;
   position: absolute;
-  left: 0;
-  top: 0;
+  /* left: 0;
+  top: 0; */
   /* grid-column-start: 8;
   grid-row-start: 8; */
 }
