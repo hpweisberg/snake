@@ -17,15 +17,7 @@ function createGameBoard(){
     sqrEl.style.gridRow = columnCounter
     boardEl.appendChild(sqrEl)
   }
-  let boardObjs = []
-  sqrEls.forEach((el, idx) => {
-    let boardObj = {
-      snakeHead: snakeHead === idx ? true : false,
-      food: foodItem === idx ? true : false
-    }
-    boardObjs.push(boardObj)
-  })
-  renderBoard(boardObjs)
+  sqrEls = document.querySelectorAll('.sqr')
 }
 // createGameBoard()
 let columnCounter = 0
@@ -33,15 +25,16 @@ let rowCounter = 0
 
 /*---------------------------- Variables (state) ----------------------------*/
 // let board
-let snakeHead
+let snakeHeadIdx
+let foodItemIdx
 let snakeHeadDirection
-let foodItem
+let sqrEls
+// let foodItem
 
 
 /*------------------------ Cached Element References ------------------------*/
 // let snakeEl = document.querySelector('.snake')
 const boardEl = document.querySelector('.board')
-const sqrEls = document.querySelectorAll('.sqr')
 const controllerEl = document.querySelector('.controller')
 const rightBtn = document.querySelector('.right-btn')
 const leftBtn = document.querySelector('.left-btn')
@@ -59,28 +52,51 @@ rightBtn.addEventListener('click', moveRight)
 leftBtn.addEventListener('click', moveLeft)
 
 /*-------------------------------- Functions --------------------------------*/
-
+init()
+// let sqrEls = document.querySelectorAll('.sqr')
 function init(){
   createGameBoard() 
-  snakeHead = sqrEls[114]
-  // board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  // for (let i = 0; i < board.length; i++){
-  //   if (board[i] === 1){
-  //     // console.log(board[i])
-  //   }
-  // }
-  // snakeHead = board.indexOf(1)
-  // board[]
-  // renderSnake() 
-  console.log(snakeEl)
+  snakeHeadIdx = pickRandomSnakeLocation()
+  foodItemIdx = generateFoodItem()
+  generateSqrElements()
 }
-init()
 
 function render(){
   // updateGameBoard()
+  generateSqrElements()
   hitWall()
 }
+function generateSqrElements(){
+  let boardObjs = []
+  sqrEls.forEach((el, idx) => {
+    let boardObj = {
+      snakeHead: snakeHeadIdx === idx ? true : false,
+      food: foodItemIdx === idx ? true : false
+    }
+    boardObjs.push(boardObj)
+  })
+  renderGameElements(boardObjs)
+}
 
+function renderGameElements(boardObjs){
+  sqrEls.forEach((el, idx) => {
+    if (boardObjs[idx].snakeHead){
+      el.style.backgroundColor = 'yellowgreen'
+    } if (boardObjs[idx].food){
+      el.style.backgroundColor = 'red'
+    } else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food){
+      el.style.backgroundColor = ''
+    }
+  })
+}
+
+function pickRandomSnakeLocation(){
+  return Math.floor(Math.random() * sqrEls.length)
+}
+
+function generateFoodItem(){
+  return Math.floor(Math.random() * sqrEls.length)
+}
 // function renderSnake(){
 //   board.forEach((element, idx) => {
 //     if (element === 1){
@@ -102,30 +118,33 @@ function render(){
 
 
 function moveRight(){
-  snakeEl = board.indexOf(1)
-  board.splice(snakeEl, 1, 0, 1)
-  board.pop()
-  console.log(board)
+  // snakeEl = board.indexOf(1)
+  // board.splice(snakeEl, 1, 0, 1)
+  // board.pop()
+  // console.log(board)
+  // // console.log(board.indexOf(1))
+  // render()
   // console.log(board.indexOf(1))
-  render()
-  console.log(board.indexOf(1))
 }
-console.log(board.indexOf(1))
+// console.log(board.indexOf(1))
 
 // console.log(snakeEl)
 
 function moveLeft(){
-  snakeEl = board.indexOf(1)
-  board.splice(snakeEl, 1, 1, 0,)
-  board.shift()
-  console.log(board)
+  // snakeEl = board.indexOf(1)
+  // board.splice(snakeEl, 1, 1, 0,)
+  // board.shift()
+  // console.log(board)
+  // // console.log(board.indexOf(1))
+  // render()
   // console.log(board.indexOf(1))
-  render()
-  console.log(board.indexOf(1))
 }
 
 function hitWall(){
-  if (board.indexOf(1) === -1){
-    console.log('Game Over')
-  }
+  // if (board.indexOf(1) === -1){
+  //   console.log('Game Over')
+  // }
 }
+
+
+console.log(sqrEls)
