@@ -17,20 +17,29 @@ function createGameBoard(){
     sqrEl.style.gridRow = columnCounter
     boardEl.appendChild(sqrEl)
   }
+  let boardObjs = []
+  sqrEls.forEach((el, idx) => {
+    let boardObj = {
+      snakeHead: snakeHead === idx ? true : false,
+      food: foodItem === idx ? true : false
+    }
+    boardObjs.push(boardObj)
+  })
+  renderBoard(boardObjs)
 }
 // createGameBoard()
-let snakeHead = 1
 let columnCounter = 0
 let rowCounter = 0
 
 /*---------------------------- Variables (state) ----------------------------*/
-let board
+// let board
+let snakeHead
 let snakeHeadDirection
 let foodItem
 
 
 /*------------------------ Cached Element References ------------------------*/
-let snakeEl = document.querySelector('.snake')
+// let snakeEl = document.querySelector('.snake')
 const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
 const controllerEl = document.querySelector('.controller')
@@ -53,7 +62,8 @@ leftBtn.addEventListener('click', moveLeft)
 
 function init(){
   createGameBoard() 
-  board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  snakeHead = sqrEls[114]
+  // board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   // for (let i = 0; i < board.length; i++){
   //   if (board[i] === 1){
   //     // console.log(board[i])
