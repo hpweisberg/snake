@@ -68,6 +68,7 @@ init()
 
 function render(){
   // updateGameBoard()
+  hitWall()
 }
 
 // function renderSnake(){
@@ -111,4 +112,10 @@ function moveLeft(){
   // console.log(board.indexOf(1))
   render()
   console.log(board.indexOf(1))
+}
+
+function hitWall(){
+  if (board.indexOf(1) === -1){
+    console.log('Game Over')
+  }
 }
