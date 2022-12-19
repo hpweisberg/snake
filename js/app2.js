@@ -2,7 +2,7 @@
 //! Create the game board
 function createGameBoard(){
   for (let i = 0; i < 256; i++){
-    sqrEl = document.createElement('div')
+    let sqrEl = document.createElement('div')
     sqrEl.classList.add('sqr')
     sqrEl.id = (i)
     rowCounter++
@@ -19,7 +19,7 @@ function createGameBoard(){
   }
 }
 // createGameBoard()
-// let snakeHead = snakeEl
+let snakeHead = 1
 let columnCounter = 0
 let rowCounter = 0
 
@@ -35,6 +35,7 @@ const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
 const controllerEl = document.querySelector('.controller')
 const rightBtn = document.querySelector('.right-btn')
+const leftBtn = document.querySelector('.left-btn')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -46,34 +47,48 @@ const rightBtn = document.querySelector('.right-btn')
 //   handleClick(evt.target)
 // })
 rightBtn.addEventListener('click', moveRight)
+leftBtn.addEventListener('click', moveLeft)
 
 /*-------------------------------- Functions --------------------------------*/
 
 function init(){
   createGameBoard() 
-  board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
-  snakeHead = board.indexOf(1)
+  board = [0 ,0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  // for (let i = 0; i < board.length; i++){
+  //   if (board[i] === 1){
+  //     // console.log(board[i])
+  //   }
+  // }
+  // snakeHead = board.indexOf(1)
+  // board[]
+  // renderSnake() 
   console.log(snakeEl)
 }
 init()
 
 function render(){
-  updateGameBoard()
+  // updateGameBoard()
 }
 
-function updateGameBoard(){
-  
-  sqrEls.forEach((element, index) => {
-    if (element === 1){
-      sqrEls[index].classList.add('.snake')
-    }
-  });
-  // console.log(snakeEl)
-}
-
-// function handleClick(evt){
-//   const sqIdx = snakeEl.target.id
+// function renderSnake(){
+//   board.forEach((element, idx) => {
+//     if (element === 1){
+//       snakeEl = sqrEls[idx]
+//       console.log([idx])
+//     }
+//   });
 // }
+
+// function updateGameBoard(){
+  
+//   sqrEls.forEach((element, index) => {
+//     if (element === 1){
+//       sqrEls[index].classList.add('.snake')
+//     }
+//   });
+  // console.log(snakeEl)
+// }
+
 
 function moveRight(){
   snakeEl = board.indexOf(1)
@@ -84,6 +99,16 @@ function moveRight(){
   render()
   console.log(board.indexOf(1))
 }
-// console.log(board.indexOf(1))
+console.log(board.indexOf(1))
 
-console.log(snakeEl)
+// console.log(snakeEl)
+
+function moveLeft(){
+  snakeEl = board.indexOf(1)
+  board.splice(snakeEl, 1, 1, 0,)
+  board.shift()
+  console.log(board)
+  // console.log(board.indexOf(1))
+  render()
+  console.log(board.indexOf(1))
+}
