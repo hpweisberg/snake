@@ -27,10 +27,14 @@ let rowCounter = 0
 // let board
 let snakeHeadIdx
 let foodItemIdx
+let snakeBody = []
 let chnageSnakeHeadDirection
 let sqrEls
 let moveInterval
 let currentDirection
+let boardObjs
+let scoreBoard
+
 // let foodItem
 
 
@@ -74,15 +78,17 @@ function render(){
     console.log(snakeHeadIdx, 'snakeheadidx')
     console.log(currentDirection, 'currentDir')
     generateSqrElements()
+    checkForFood()
     hitWall()
-  }, 1000);
+  }, 700);
 }
 function generateSqrElements(){
-  let boardObjs = []
+  boardObjs = []
   sqrEls.forEach((el, idx) => {
     let boardObj = {
       snakeHead: snakeHeadIdx === idx ? true : false,
-      food: foodItemIdx === idx ? true : false
+      food: foodItemIdx === idx ? true : false,
+      snakeBody: snakeBody === idx ? true : false
     }
     boardObjs.push(boardObj)
   })
@@ -91,13 +97,16 @@ function generateSqrElements(){
 
 function renderGameElements(boardObjs){
   sqrEls.forEach((el, idx) => {
-    if (boardObjs[idx].snakeHead){
-      el.style.backgroundColor = 'yellowgreen'
-    } if (boardObjs[idx].food){
+    if (boardObjs[idx].food){
       el.style.backgroundColor = 'red'
-    } else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food){
-      el.style.backgroundColor = ''
+    } if (boardObjs[idx].snakeHead){
+      el.style.backgroundColor = 'yellowgreen'
+    } if (boardObjs[idx].snakeBody){
+      el.style.backgroundColor = 'yellow'
     }
+    else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBody){
+      el.style.backgroundColor = ''
+    } 
   })
 }
 
@@ -139,24 +148,17 @@ function pickRandomSnakeLocation(){
 function generateFoodItem(){
   return Math.floor(Math.random() * sqrEls.length)
 }
-// function renderSnake(){
-//   board.forEach((element, idx) => {
-//     if (element === 1){
-//       snakeEl = sqrEls[idx]
-//       console.log([idx])
-//     }
-//   });
-// }
 
-// function updateGameBoard(){
+function checkForFood(){
   
-//   sqrEls.forEach((element, index) => {
-//     if (element === 1){
-//       sqrEls[index].classList.add('.snake')
-//     }
-//   });
-  // console.log(snakeEl)
-// }
+  if (snakeHeadIdx === foodItemIdx){
+    snakeBody.push(1)
+    foodItemIdx = generateFoodItem()
+    console.log(snakeBody)
+    console.log('eat food')
+    // snakeBody last part - 1
+  }
+}
 
 
 function moveRight(){
