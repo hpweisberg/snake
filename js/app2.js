@@ -27,8 +27,10 @@ let rowCounter = 0
 // let board
 let snakeHeadIdx
 let foodItemIdx
-let snakeHeadDirection
+let chnageSnakeHeadDirection
 let sqrEls
+let moveInterval
+let currentDirection
 // let foodItem
 
 
@@ -50,21 +52,30 @@ const leftBtn = document.querySelector('.left-btn')
 // })
 rightBtn.addEventListener('click', moveRight)
 leftBtn.addEventListener('click', moveLeft)
+document.querySelector('body').addEventListener('keydown', changeDirection)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
 // let sqrEls = document.querySelectorAll('.sqr')
 function init(){
   createGameBoard() 
+  // snakeHeadIdx = pickRandomSnakeLocation()
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
+  currentDirection = null
   generateSqrElements()
 }
 
 function render(){
   // updateGameBoard()
-  generateSqrElements()
-  hitWall()
+  moveInterval = setInterval(() => {
+    // changeDirection()
+    moveSnakeHead()
+    console.log(snakeHeadIdx, 'snakeheadidx')
+    console.log(currentDirection, 'currentDir')
+    generateSqrElements()
+    hitWall()
+  }, 1000);
 }
 function generateSqrElements(){
   let boardObjs = []
@@ -88,6 +99,37 @@ function renderGameElements(boardObjs){
       el.style.backgroundColor = ''
     }
   })
+}
+
+function changeDirection(evt){
+  if (!moveInterval) {
+    render()
+  }
+  if (evt.key === 'ArrowUp'){
+    currentDirection = 'n'
+    console.log('up is pressed')
+  } else if (evt.key === 'ArrowRight'){
+    currentDirection = 'e'
+    console.log('right is pressed')
+  } else if (evt.key === 'ArrowDown'){
+    currentDirection = 's'
+    console.log('down is pressed')
+  } else if (evt.key === 'ArrowLeft'){
+    currentDirection = 'w'
+    console.log('left is pressed')
+  }
+}
+
+function moveSnakeHead(){
+  if (currentDirection === 'n'){
+    snakeHeadIdx = snakeHeadIdx - 16
+  } if (currentDirection === 'e'){
+    snakeHeadIdx = snakeHeadIdx + 1
+  } if (currentDirection === 's'){
+    snakeHeadIdx = snakeHeadIdx + 16
+  } if (currentDirection === 'w'){
+    snakeHeadIdx = snakeHeadIdx - 1
+  } 
 }
 
 function pickRandomSnakeLocation(){
