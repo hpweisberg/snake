@@ -114,16 +114,16 @@ function changeDirection(evt){
   if (!moveInterval) {
     render()
   }
-  if (evt.key === 'ArrowUp'){
+  if (evt.key === 'ArrowUp' && currentDirection != 's'){
     currentDirection = 'n'
     console.log('up is pressed')
-  } else if (evt.key === 'ArrowRight'){
+  } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
     currentDirection = 'e'
     console.log('right is pressed')
-  } else if (evt.key === 'ArrowDown'){
+  } else if (evt.key === 'ArrowDown' && currentDirection != 'n'){
     currentDirection = 's'
     console.log('down is pressed')
-  } else if (evt.key === 'ArrowLeft'){
+  } else if (evt.key === 'ArrowLeft' && currentDirection != 'e'){
     currentDirection = 'w'
     console.log('left is pressed')
   }
@@ -191,9 +191,9 @@ function moveLeft(){
 }
 
 function hitWall(){
-  // if (board.indexOf(1) === -1){
-  //   console.log('Game Over')
-  // }
+  if (board.indexOf(1) === -1){
+    console.log('Game Over')
+  }
 }
 
 
