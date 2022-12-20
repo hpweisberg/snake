@@ -16,8 +16,22 @@ function createGameBoard(){
     sqrEl.style.gridColumn = rowCounter 
     sqrEl.style.gridRow = columnCounter
     boardEl.appendChild(sqrEl)
+    if (columnCounter === 1){
+      sqrEl.classList.add ('nWall')
+    }
+    if (columnCounter === 16){
+      sqrEl.classList.add ('sWall')
+    }
+    if (rowCounter === 1){
+      sqrEl.classList.add ('wWall')
+    }
+    if (rowCounter === 0){
+      sqrEl.classList.add ('eWall')
+    }
+    // console.log(columnCounter)
   }
   sqrEls = document.querySelectorAll('.sqr')
+  // wallEl
 }
 // createGameBoard()
 let columnCounter = 0
@@ -34,6 +48,7 @@ let moveInterval
 let currentDirection
 let boardObjs
 let scoreBoard
+// let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
 
 // let foodItem
 
@@ -82,9 +97,10 @@ function render(){
     console.log(currentDirection, 'currentDir')
     generateSqrElements()
     checkForFood()
+    // crashDetection()
     hitWall()
     snakeBodyExtension()
-  }, 700);
+  }, 500);
 }
 function generateSqrElements(){
   boardObjs = []
@@ -172,19 +188,25 @@ function checkForFood(){
   if (snakeHeadIdx === foodItemIdx){
     snakeBody.push(1)
     foodItemIdx = generateFoodItem()
-    console.log(snakeBody)
+    // console.log(snakeBody)
     console.log('eat food')
     // snakeBody last part - 1
   }
 }
 
-function snakeBodyExtension() {
+function snakeBodyExtension(){
     if (snakeBody.length) {
       snakeBody.unshift(snakeHeadIdx)
       snakeBody.pop()
     }
-    console.log(snakeBody)
+    // console.log(snakeBody)
   }
+
+  // function crashDetection(){
+  //   if (sqrEls.boardObj[snakeHeadIdx] === true && sqrEls.boardObj[foodItemIdx] === true){
+  //     console.log('crash!!')
+  //   }
+  // }
 
 
 function moveRight(){
@@ -211,11 +233,12 @@ function moveLeft(){
 }
 
 function hitWall(){
-  if (currentDirection === 'w'){
-    while (snakeHeadIdx === sqrEls[0, 16, 32, 48, 52]){
-      console.log('Game Over')
-    }
+  if (sqrEls[snakeHeadIdx].classList.contains('nWall')){
+    console.log('Game Over') 
+    endGame()
   }
+  //   }
+  // }
 }
 
 function reset(){
@@ -224,6 +247,14 @@ function reset(){
   currentDirection = null
   snakeBody = []
   generateSqrElements()
+}
+
+function endGame(){
+  moveInterval = null
+  currentDirection = null
+  boardEl.style.backgroundColor = 'red'
+  console.log('play again?')
+  
 }
 
 
