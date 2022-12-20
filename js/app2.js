@@ -98,18 +98,25 @@ function generateSqrElements(){
 function renderGameElements(boardObjs){
   sqrEls.forEach((el, idx) => {
     if (boardObjs[idx].food){
-      el.style.backgroundColor = 'red'
+      el.style.backgroundImage = "url('../assets/ball.png')"
+      el.style.backgroundPosition = 'center'
+      el.style.backgroundSize = 'cover'
+      el.style.backgroundRepeat = 'no-repeat'
     } if (boardObjs[idx].snakeHead){
       // el.style.backgroundColor = 'yellowgreen'
       el.style.backgroundImage = "url('../assets/kobe.png')"
       el.style.backgroundPosition = 'center'
-      el.style.backgroundSize = 'contain'
+      el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
     } if (boardObjs[idx].snakeBody){
       el.style.backgroundColor = 'yellow'
     }
     else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBody){
       el.style.backgroundColor = ''
+      el.style.backgroundImage = ''
+      el.style.backgroundPosition = 'center'
+      el.style.backgroundSize = 'cover'
+      el.style.backgroundRepeat = 'no-repeat'
     } 
   })
 }
