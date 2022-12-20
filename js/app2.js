@@ -160,6 +160,12 @@ function checkForFood(){
   }
 }
 
+function snakeBodyExtension(){
+  snakeBody.forEach(el => {
+    
+  });
+}
+
 
 function moveRight(){
   // snakeEl = board.indexOf(1)
