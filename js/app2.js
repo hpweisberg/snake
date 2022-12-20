@@ -27,7 +27,7 @@ let rowCounter = 0
 // let board
 let snakeHeadIdx
 let foodItemIdx
-let snakeBody = []
+let snakeBody
 let chnageSnakeHeadDirection
 let sqrEls
 let moveInterval
@@ -67,6 +67,7 @@ function init(){
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
   currentDirection = null
+  snakeBody = []
   generateSqrElements()
 }
 
@@ -80,6 +81,7 @@ function render(){
     generateSqrElements()
     checkForFood()
     hitWall()
+    snakeBodyExtension()
   }, 700);
 }
 function generateSqrElements(){
@@ -88,7 +90,7 @@ function generateSqrElements(){
     let boardObj = {
       snakeHead: snakeHeadIdx === idx ? true : false,
       food: foodItemIdx === idx ? true : false,
-      snakeBody: snakeBody === idx ? true : false
+      snakeBod: snakeBody.includes(idx) ? true : false
     }
     boardObjs.push(boardObj)
   })
@@ -108,8 +110,11 @@ function renderGameElements(boardObjs){
       el.style.backgroundPosition = 'center'
       el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
-    } if (boardObjs[idx].snakeBody){
-      el.style.backgroundColor = 'yellow'
+    } else if (boardObjs[idx].snakeBod){
+      el.style.backgroundImage = "url('../assets/trophy-ball.png')"
+      el.style.backgroundPosition = 'center'
+      el.style.backgroundSize = 'cover'
+      el.style.backgroundRepeat = 'no-repeat'
     }
     else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBody){
       el.style.backgroundColor = ''
@@ -171,11 +176,13 @@ function checkForFood(){
   }
 }
 
-function snakeBodyExtension(){
-  snakeBody.forEach(el => {
-    
-  });
-}
+function snakeBodyExtension() {
+    if (snakeBody.length) {
+      snakeBody.unshift(snakeHeadIdx)
+      snakeBody.pop()
+    }
+    console.log(snakeBody)
+  }
 
 
 function moveRight(){
