@@ -44,6 +44,7 @@ const boardEl = document.querySelector('.board')
 const controllerEl = document.querySelector('.controller')
 const rightBtn = document.querySelector('.right-btn')
 const leftBtn = document.querySelector('.left-btn')
+const resetBtn = document.querySelector('.rest-btn')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -57,6 +58,7 @@ const leftBtn = document.querySelector('.left-btn')
 rightBtn.addEventListener('click', moveRight)
 leftBtn.addEventListener('click', moveLeft)
 document.querySelector('body').addEventListener('keydown', changeDirection)
+resetBtn.addEventListener('click', reset)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -214,6 +216,14 @@ function hitWall(){
       console.log('Game Over')
     }
   }
+}
+
+function reset(){
+  snakeHeadIdx = pickRandomSnakeLocation()
+  foodItemIdx = generateFoodItem()
+  currentDirection = null
+  snakeBody = []
+  generateSqrElements()
 }
 
 
