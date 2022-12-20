@@ -48,7 +48,8 @@ let moveInterval
 let currentDirection
 let boardObjs
 let scoreBoard
-// let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
+let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
+let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
 // let foodItem
 
@@ -98,7 +99,7 @@ function render(){
     generateSqrElements()
     checkForFood()
     // crashDetection()
-    hitWall()
+    // hitWall()
     snakeBodyExtension()
   }, 500);
 }
@@ -173,6 +174,7 @@ function moveSnakeHead(){
   } if (currentDirection === 'w'){
     snakeHeadIdx = snakeHeadIdx - 1
   } 
+  hitWall()
 }
 
 function pickRandomSnakeLocation(){
@@ -202,11 +204,11 @@ function snakeBodyExtension(){
     // console.log(snakeBody)
   }
 
-  // function crashDetection(){
-  //   if (sqrEls.boardObj[snakeHeadIdx] === true && sqrEls.boardObj[foodItemIdx] === true){
-  //     console.log('crash!!')
-  //   }
-  // }
+  function crashDetection(){
+    if (sqrEls.boardObj[snakeHeadIdx] === true && sqrEls.boardObj[foodItemIdx] === true){
+      console.log('crash!!')
+    }
+  }
 
 
 function moveRight(){
@@ -233,12 +235,19 @@ function moveLeft(){
 }
 
 function hitWall(){
-  if (sqrEls[snakeHeadIdx].classList.contains('nWall')){
-    console.log('Game Over') 
+  if (snakeHeadIdx < 0){
+    // console.log(sqrEls[snakeHeadIdx].classList.contains('nWall'))
+    console.log(snakeHeadIdx)
+    // boardEl.style.backgroundColor = 'red'
+
     endGame()
-  }
+  } if (snakeHeadIdx > 255){
+    endGame()
   //   }
   // }
+  } if (snakeHeadIdx) {
+    
+  }
 }
 
 function reset(){
@@ -250,7 +259,7 @@ function reset(){
 }
 
 function endGame(){
-  moveInterval = null
+  moveInterval = 100000000
   currentDirection = null
   boardEl.style.backgroundColor = 'red'
   console.log('play again?')

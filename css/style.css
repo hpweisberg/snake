@@ -51,8 +51,8 @@ body {
 
 .board {
   display: grid;
-  grid-template-columns: auto-repeate(16, 11vmin);
-  grid-template-rows: auto-repeate(16, 11vmin);
+  grid-template-columns: auto-repeate(18, 11vmin);
+  grid-template-rows: auto-repeate(18, 11vmin);
   /* grid-column: 1/17;
   grid-row: 1/15; */
   /* grid-gap: 0vmin; */
@@ -69,6 +69,11 @@ body {
   box-shadow: black 10px 10px 70px;
   z-index: 1;
   margin-top: 10%;
+}
+
+.wall {
+  display: grid;
+  border: none;
 }
 
 .sqr {
