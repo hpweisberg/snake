@@ -100,7 +100,11 @@ function renderGameElements(boardObjs){
     if (boardObjs[idx].food){
       el.style.backgroundColor = 'red'
     } if (boardObjs[idx].snakeHead){
-      el.style.backgroundColor = 'yellowgreen'
+      // el.style.backgroundColor = 'yellowgreen'
+      el.style.backgroundImage = "url('../assets/kobe.png')"
+      el.style.backgroundPosition = 'center'
+      el.style.backgroundSize = 'contain'
+      el.style.backgroundRepeat = 'no-repeat'
     } if (boardObjs[idx].snakeBody){
       el.style.backgroundColor = 'yellow'
     }
@@ -191,8 +195,10 @@ function moveLeft(){
 }
 
 function hitWall(){
-  if (board.indexOf(1) === -1){
-    console.log('Game Over')
+  if (currentDirection === 'w'){
+    while (snakeHeadIdx === sqrEls[0, 16, 32, 48, 52]){
+      console.log('Game Over')
+    }
   }
 }
 

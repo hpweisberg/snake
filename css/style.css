@@ -77,6 +77,12 @@ body {
   grid-row-start: 8; */
 }
 
+.kobe{
+  width: 25px;
+  height: 25px;
+  background-image: url("../assets/kobe.png");
+}
+
 .controller {
   display: flex;
   justify-content: center;
