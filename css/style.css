@@ -12,10 +12,9 @@ html {
 }
 
 body {
-  background-color: gray;
+  background-color: rgb(253,185,39);
 /* Use a system font, if none are available use an available sans-sarif   font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: 'Graduate', cursive;
   /* margin: 0; */
 }
 
@@ -47,9 +46,10 @@ body {
   /* grid-template-columns: 100px 100px 100px ;
   grid-template-rows: 100px 100px 100px 20px; */
   /* justify-content: center; */
-  border: 1px solid rgb(255, 13, 13);
-  background-color: rgb(18, 22, 48);
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(85,37,130);
   box-shadow: black 10px 10px 70px;
+  z-index: 1;
 }
 
 .sqr {
@@ -90,4 +90,33 @@ body {
 .game-operators {
   display: flex;
   justify-content: center;
+}
+
+.background-numbers{
+  font-family: 'Graduate', cursive;
+  font-size: 150px;
+  -webkit-text-stroke-color: whitesmoke;
+  -webkit-text-stroke-width: 1px;
+  color: rgb(0, 0, 0, .2);
+  z-index: -1;
+}
+#eight {
+  display: flex;
+  float: left;
+  position: absolute;
+  left: 50px;
+  top: -160px
+}
+#twentyfour {
+  display: flex;
+  float: right;
+  position: absolute;
+  right: -20px;
+  top: -80px;
+  font-size: 240px;
+  letter-spacing: -25px;
+}
+
+.score-board {
+  
 }
