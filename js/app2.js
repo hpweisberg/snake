@@ -50,7 +50,7 @@ let boardObjs
 let scoreBoard = 0
 let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
 let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-let speedVal = 0
+let speedVal = 1000
 
 // let foodItem
 
@@ -115,9 +115,11 @@ function render(){
     changeSpeed()
     // hitWall()
     snakeBodyExtension()
-    console.log(boardObjs[snakeHeadIdx].snakeBod.length)
+    // console.log(boardObjs[snakeHeadIdx].snakeBod.length)
+    console.log(scoreBoard)
+    console.log(speedVal)
 
-  }, 1000);
+  }, speedVal);
 }
 function generateSqrElements(){
   boardObjs = []
@@ -237,14 +239,25 @@ function snakeBodyExtension(){
   function incrementScoreBoard(){
     scoreBoard = snakeBody.length
     scoreEl.textContent = `${scoreBoard}`  
+    changeSpeed()
   }
 
   function changeSpeed(){
-    if (scoreBoard < 5){
-      speedVal === 1000
-    }
+    if (scoreBoard === 0){
+      clearInterval(moveInterval)
+      speedVal = 900
+      render()
+    } if (scoreBoard > 1){
+      clearInterval(moveInterval)
+      speedVal = 800
+      render()
+    }   if (scoreBoard > 2){
+      clearInterval(moveInterval)
+      speedVal = 500
+      render()
+    } 
   }
-  console.log(speedVal)
+
 
 console.log(boardObjs[snakeHeadIdx].snakeBod.length)
 
@@ -290,7 +303,7 @@ function hitWall(){
         console.log('did it wokr?')
         endGame()
       }
-    }, "900")
+    }, speedVal-10)
   }
 }
 // }
@@ -308,7 +321,7 @@ function endGame(){
   setInterval = null
   currentDirection = null
   boardEl.style.backgroundColor = 'red'
-  clearInterval()
+  clearInterval(moveInterval)
   console.log('play again?')
   
 }
