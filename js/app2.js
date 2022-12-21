@@ -65,6 +65,7 @@ const downBtn = document.querySelector('.down-btn')
 const leftBtn = document.querySelector('.left-btn')
 const resetBtn = document.querySelector('.rest-btn')
 const scoreEl = document.querySelector('.score-board')
+const ref = document.querySelector('.ref')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -96,6 +97,7 @@ function init(){
   foodItemIdx = generateFoodItem()
   currentDirection = null
   snakeBody = []
+  ref.style.display = 'none'
   generateSqrElements()
   incrementScoreBoard()
 }
@@ -334,6 +336,7 @@ function reset(){
   speedVal = 800
   incrementScoreBoard()
   boardEl.style.backgroundColor = 'rgb(85,37,130)'
+  ref.style.display = 'none'
   render()
 }
 
@@ -343,7 +346,7 @@ function endGame(){
   boardEl.style.backgroundColor = 'red'
   clearInterval(moveInterval)
   console.log('play again?')
-  
+  ref.style.display = 'flex'
 }
 
 // moveInterval = setInterval(() => {

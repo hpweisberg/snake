@@ -15,6 +15,7 @@ body {
   background-color: rgb(253,185,39);
 /* Use a system font, if none are available use an available sans-sarif   font */
   font-family: 'Graduate', cursive;
+  /* flex-wrap: nowrap; */
   /* margin: 0; */
 }
 
@@ -110,6 +111,7 @@ body {
 .controller {
   display: flex;
   justify-content: center;
+  margin-top: 5px;
   
 }
 
@@ -213,9 +215,59 @@ body {
 }
 
 .right-btn {
-  display: flex;
-  position: relative;
-  width: 100px;
+  /* display: flex; */
+  /* position: relative; */
+  width: 150px;
   height: 90px;
   order: 4;
+}
+
+.left-btn {
+  /* display: flex; */
+  /* position: relative; */
+  width: 150px;
+  height: 90px;
+  order: -1;
+}
+
+.up-btn {
+  width: 250px;
+  height: 45px;
+
+}
+
+.down-btn {
+  /* display: flex; */
+  /* position: relative; */
+  /* flex-direction: column; */
+  height: 45px;
+  width: 250px;
+}
+
+.ref {
+  display: flex;
+  position: fixed;
+}
+
+.ref h1 {
+  color: rgb(85,37,130);
+  font-size: 45px;
+  -webkit-text-stroke-color: whitesmoke;
+  -webkit-text-stroke-width: .2px;
+  position: relative;
+  display: flex;
+  top: 280px;
+  text-shadow: 7px 7px 10px rgb(0, 0, 0);
+}
+
+img {
+  display: flex;
+  position: fixed;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* size-adjust: 50%; */
+  width: 400px;
+  right: 250px;
+  top: 140px;
+  /* height: 100px; */
 }
