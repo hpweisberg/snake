@@ -89,10 +89,9 @@ resetBtn.addEventListener('click', reset)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
-// let sqrEls = document.querySelectorAll('.sqr')
+
 function init(){
   createGameBoard() 
-  // snakeHeadIdx = pickRandomSnakeLocation()
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
   currentDirection = null
@@ -102,9 +101,7 @@ function init(){
 }
 
 function render(){
-  // updateGameBoard()
   moveInterval = setInterval(() => {
-    // changeDirection()
     moveSnakeHead()
     console.log(snakeHeadIdx, 'snakeheadidx')
     console.log(currentDirection, 'currentDir')
@@ -113,9 +110,7 @@ function render(){
     crashDetection()
     incrementScoreBoard()
     changeSpeed()
-    // hitWall()
     snakeBodyExtension()
-    // console.log(boardObjs[snakeHeadIdx].snakeBod.length)
     console.log(scoreBoard)
     console.log(speedVal)
 
@@ -142,7 +137,6 @@ function renderGameElements(boardObjs){
       el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
     } if (boardObjs[idx].snakeHead){
-      // el.style.backgroundColor = 'yellowgreen'
       el.style.backgroundImage = "url('../assets/kobe.png')"
       el.style.backgroundPosition = 'center'
       el.style.backgroundSize = 'cover'
@@ -215,9 +209,7 @@ function checkForFood(){
   if (snakeHeadIdx === foodItemIdx){
     snakeBody.push(1)
     foodItemIdx = generateFoodItem()
-    // console.log(snakeBody)
     console.log('eat food')
-    // snakeBody last part - 1
   }
 }
 
@@ -226,7 +218,6 @@ function snakeBodyExtension(){
       snakeBody.unshift(snakeHeadIdx)
       snakeBody.pop()
     }
-    // console.log(snakeBody)
   }
 
   function crashDetection(){
@@ -317,27 +308,22 @@ function moveLeft(){
 
 function hitWall(){
   if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
-    // console.log(sqrEls[snakeHeadIdx].classList.contains('nWall'))
     console.log(snakeHeadIdx)
-    // boardEl.style.backgroundColor = 'red'
     endGame()
   } if (sqrEls[snakeHeadIdx+1].classList.contains('wWall')) {
     setTimeout(() => {
       if (currentDirection === 'e') {
-        console.log('did it wokr?')
         endGame()
       }
-    }, "900")
+    }, speedVal-10)
   } if (sqrEls[snakeHeadIdx-1].classList.contains('eWall')) {
     setTimeout(() => {
       if (currentDirection === 'w') {
-        console.log('did it wokr?')
         endGame()
       }
     }, speedVal-10)
   }
 }
-// }
 
 function reset(){
   snakeHeadIdx = pickRandomSnakeLocation()
@@ -346,6 +332,7 @@ function reset(){
   snakeBody = []
   generateSqrElements()
   speedVal = 800
+  incrementScoreBoard()
   boardEl.style.backgroundColor = 'rgb(85,37,130)'
   render()
 }
