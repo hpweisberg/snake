@@ -79,7 +79,7 @@ const ref = document.querySelector('.ref')
 // rightBtn.addEventListener('click', moveRight)
 // leftBtn.addEventListener('click', moveLeft)
 document.querySelector('body').addEventListener('keydown', changeDirection)
-document.querySelector('.controller').addEventListener('click', changeDirection)
+document.querySelector('.up-btn').addEventListener('click', checkForBtnClick)
 resetBtn.addEventListener('click', reset)
 // controllerEl.addEventListener('click', function(evt){
 //   if (evt.target(rightBtn)){
@@ -93,6 +93,9 @@ init()
 
 function init(){
   createGameBoard() 
+  if (moveInterval){
+    clearInterval(moveInterval)
+  }
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
   currentDirection = null
@@ -103,7 +106,10 @@ function init(){
 }
 
 function render(){
+  console.log(speedVal)
+  console.log(moveInterval)
   moveInterval = setInterval(() => {
+    console.log('after intervallklklk')
     moveSnakeHead()
     console.log(snakeHeadIdx, 'snakeheadidx')
     console.log(currentDirection, 'currentDir')
@@ -179,11 +185,25 @@ function changeDirection(evt){
   }
 }
 
-// function checkForBtnClick(evt){
-//   if (rightBtn){
-
-//   }
-// }
+function checkForBtnClick(evt){
+  if (!moveInterval) {
+    render()
+    console.log(evt)
+  }
+  if (evt.target.id === 'upBtn' && currentDirection != 's'){
+    currentDirection = 'n'
+    console.log('up is pressed')
+  } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
+    currentDirection = 'e'
+    console.log('right is pressed')
+  } else if (evt.key === 'ArrowDown' && currentDirection != 'n'){
+    currentDirection = 's'
+    console.log('down is pressed')
+  } else if (evt.key === 'ArrowLeft' && currentDirection != 'e'){
+    currentDirection = 'w'
+    console.log('left is pressed')
+  }
+}
 
 function moveSnakeHead(){
   if (currentDirection === 'n'){
@@ -327,18 +347,49 @@ function hitWall(){
   }
 }
 
+// function reset(){
+//   moveInterval = setInterval(() => {
+//   snakeHeadIdx = pickRandomSnakeLocation()
+//   foodItemIdx = generateFoodItem()
+//   currentDirection = null
+//   snakeBody = []
+//   generateSqrElements()
+//   speedVal = 800
+//   incrementScoreBoard()
+//   boardEl.style.backgroundColor = 'rgb(85,37,130)'
+//   ref.style.display = 'none'
+//   // render()
+//   }, speedVal);
+// }
+
 function reset(){
-  snakeHeadIdx = pickRandomSnakeLocation()
-  foodItemIdx = generateFoodItem()
-  currentDirection = null
-  snakeBody = []
-  generateSqrElements()
-  speedVal = 800
-  incrementScoreBoard()
-  boardEl.style.backgroundColor = 'rgb(85,37,130)'
-  ref.style.display = 'none'
-  render()
+  init()
 }
+
+// function reset(){
+//   // render()
+//   // moveInterval = setInterval(() => {
+//   //     snakeHeadIdx = pickRandomSnakeLocation()
+//   //     foodItemIdx = generateFoodItem()
+//   //     currentDirection = null
+//   //     snakeBody = []
+//   //     generateSqrElements()
+//   //     speedVal = 800
+//   //     incrementScoreBoard()
+//   //     boardEl.style.backgroundColor = 'rgb(85,37,130)'
+//   //     ref.style.display = 'none'
+//   //     // render()
+//   //     }, speedVal);
+//   snakeHeadIdx = pickRandomSnakeLocation()
+//   foodItemIdx = generateFoodItem()
+//   currentDirection = null
+//   snakeBody = []
+//   generateSqrElements()
+//   // speedVal = 800
+//   incrementScoreBoard()
+//   boardEl.style.backgroundColor = 'rgb(85,37,130)'
+//   ref.style.display = 'none'
+// }
 
 function endGame(){
   setInterval = null
