@@ -98,10 +98,10 @@ function render(){
     console.log(currentDirection, 'currentDir')
     generateSqrElements()
     checkForFood()
-    // crashDetection()
+    crashDetection()
     // hitWall()
     snakeBodyExtension()
-  }, 500);
+  }, 1000);
 }
 function generateSqrElements(){
   boardObjs = []
@@ -205,8 +205,9 @@ function snakeBodyExtension(){
   }
 
   function crashDetection(){
-    if (sqrEls.boardObj[snakeHeadIdx] === true && sqrEls.boardObj[foodItemIdx] === true){
+    if (sqrEls[snakeHeadIdx].classList.contains('snakeHead') && sqrEls[snakeHeadIdx].classList.contains('snakeBod')){
       console.log('crash!!')
+      endGame()
     }
   }
 
@@ -235,20 +236,28 @@ function moveLeft(){
 }
 
 function hitWall(){
-  if (snakeHeadIdx < 0){
+  if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
     // console.log(sqrEls[snakeHeadIdx].classList.contains('nWall'))
     console.log(snakeHeadIdx)
     // boardEl.style.backgroundColor = 'red'
-
     endGame()
-  } if (snakeHeadIdx > 255){
-    endGame()
-  //   }
-  // }
-  } if (snakeHeadIdx) {
-    
+  } if (sqrEls[snakeHeadIdx+1].classList.contains('wWall')) {
+    setTimeout(() => {
+      if (currentDirection === 'e') {
+        console.log('did it wokr?')
+        endGame()
+      }
+    }, "900")
+  } if (sqrEls[snakeHeadIdx-1].classList.contains('eWall')) {
+    setTimeout(() => {
+      if (currentDirection === 'w') {
+        console.log('did it wokr?')
+        endGame()
+      }
+    }, "900")
   }
 }
+// }
 
 function reset(){
   snakeHeadIdx = pickRandomSnakeLocation()
@@ -259,12 +268,24 @@ function reset(){
 }
 
 function endGame(){
-  moveInterval = 100000000
+  setInterval = null
   currentDirection = null
   boardEl.style.backgroundColor = 'red'
   console.log('play again?')
   
 }
 
+// moveInterval = setInterval(() => {
+//   // changeDirection()
+//   moveSnakeHead()
+//   console.log(snakeHeadIdx, 'snakeheadidx')
+//   console.log(currentDirection, 'currentDir')
+//   generateSqrElements()
+//   checkForFood()
+//   crashDetection()
+//   // hitWall()
+//   snakeBodyExtension()
+// }, 1000);
 
-console.log(sqrEls)
+
+// console.log(sqrEls)
