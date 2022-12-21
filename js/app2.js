@@ -245,19 +245,50 @@ function snakeBodyExtension(){
   function changeSpeed(){
     if (scoreBoard === 0){
       clearInterval(moveInterval)
-      speedVal = 900
+      speedVal = 700
       render()
-    } if (scoreBoard > 1){
+    } if (scoreBoard > 4){
       clearInterval(moveInterval)
-      speedVal = 800
+      speedVal = 650
       render()
-    }   if (scoreBoard > 2){
+    } if (scoreBoard > 9){
+      clearInterval(moveInterval)
+      speedVal = 600
+      render()
+    } if (scoreBoard > 14){
+      clearInterval(moveInterval)
+      speedVal = 550
+      render()
+    } if (scoreBoard > 19){
       clearInterval(moveInterval)
       speedVal = 500
       render()
-    } 
+    } if (scoreBoard > 24){
+      clearInterval(moveInterval)
+      speedVal = 450
+      render()
+    } if (scoreBoard > 29){
+      clearInterval(moveInterval)
+      speedVal = 400
+      render()
+    } if (scoreBoard > 34){
+      clearInterval(moveInterval)
+      speedVal = 350
+      render()
+    } if (scoreBoard > 39){
+      clearInterval(moveInterval)
+      speedVal = 300
+      render()
+    } if (scoreBoard > 44){
+      clearInterval(moveInterval)
+      speedVal = 250
+      render()
+    } if (scoreBoard > 49){
+      clearInterval(moveInterval)
+      speedVal = 200
+      render()
+    }
   }
-
 
 console.log(boardObjs[snakeHeadIdx].snakeBod.length)
 
@@ -314,7 +345,9 @@ function reset(){
   currentDirection = null
   snakeBody = []
   generateSqrElements()
+  speedVal = 800
   boardEl.style.backgroundColor = 'rgb(85,37,130)'
+  render()
 }
 
 function endGame(){
