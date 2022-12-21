@@ -50,6 +50,7 @@ let boardObjs
 let scoreBoard = 0
 let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
 let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+let speedVal = 0
 
 // let foodItem
 
@@ -111,6 +112,7 @@ function render(){
     checkForFood()
     crashDetection()
     incrementScoreBoard()
+    changeSpeed()
     // hitWall()
     snakeBodyExtension()
     console.log(boardObjs[snakeHeadIdx].snakeBod.length)
@@ -164,7 +166,7 @@ function changeDirection(evt){
     render()
     console.log(evt)
   }
-  if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.pointer === upBtn && currentDirection != 's'){
+  if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.target.id === upBtn && currentDirection != 's'){
     currentDirection = 'n'
     console.log('up is pressed')
   } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
@@ -236,7 +238,13 @@ function snakeBodyExtension(){
     scoreBoard = snakeBody.length
     scoreEl.textContent = `${scoreBoard}`  
   }
-  
+
+  function changeSpeed(){
+    if (scoreBoard < 5){
+      speedVal === 1000
+    }
+  }
+  console.log(speedVal)
 
 console.log(boardObjs[snakeHeadIdx].snakeBod.length)
 
@@ -293,12 +301,14 @@ function reset(){
   currentDirection = null
   snakeBody = []
   generateSqrElements()
+  boardEl.style.backgroundColor = 'rgb(85,37,130)'
 }
 
 function endGame(){
   setInterval = null
   currentDirection = null
   boardEl.style.backgroundColor = 'red'
+  clearInterval()
   console.log('play again?')
   
 }
