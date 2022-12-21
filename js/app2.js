@@ -47,7 +47,7 @@ let sqrEls
 let moveInterval
 let currentDirection
 let boardObjs
-let scoreBoard
+let scoreBoard = 0
 let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
 let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
@@ -59,8 +59,11 @@ let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 const boardEl = document.querySelector('.board')
 const controllerEl = document.querySelector('.controller')
 const rightBtn = document.querySelector('.right-btn')
+const upBtn = document.querySelector('.up-btn')
+const downBtn = document.querySelector('.down-btn')
 const leftBtn = document.querySelector('.left-btn')
 const resetBtn = document.querySelector('.rest-btn')
+const scoreEl = document.querySelector('.score-board')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -71,10 +74,17 @@ const resetBtn = document.querySelector('.rest-btn')
 // controllerEl.addEventListener('click', function(evt){
 //   handleClick(evt.target)
 // })
-rightBtn.addEventListener('click', moveRight)
-leftBtn.addEventListener('click', moveLeft)
+// rightBtn.addEventListener('click', moveRight)
+// leftBtn.addEventListener('click', moveLeft)
 document.querySelector('body').addEventListener('keydown', changeDirection)
+document.querySelector('.controller').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
+// controllerEl.addEventListener('click', function(evt){
+//   if (evt.target(rightBtn)){
+//     console.log('right click')
+//   }
+// })
+
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -87,6 +97,7 @@ function init(){
   currentDirection = null
   snakeBody = []
   generateSqrElements()
+  incrementScoreBoard()
 }
 
 function render(){
@@ -99,8 +110,11 @@ function render(){
     generateSqrElements()
     checkForFood()
     crashDetection()
+    incrementScoreBoard()
     // hitWall()
     snakeBodyExtension()
+    console.log(boardObjs[snakeHeadIdx].snakeBod.length)
+
   }, 1000);
 }
 function generateSqrElements(){
@@ -148,8 +162,9 @@ function renderGameElements(boardObjs){
 function changeDirection(evt){
   if (!moveInterval) {
     render()
+    console.log(evt)
   }
-  if (evt.key === 'ArrowUp' && currentDirection != 's'){
+  if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.pointer === upBtn && currentDirection != 's'){
     currentDirection = 'n'
     console.log('up is pressed')
   } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
@@ -163,6 +178,12 @@ function changeDirection(evt){
     console.log('left is pressed')
   }
 }
+
+// function checkForBtnClick(evt){
+//   if (rightBtn){
+
+//   }
+// }
 
 function moveSnakeHead(){
   if (currentDirection === 'n'){
@@ -205,12 +226,19 @@ function snakeBodyExtension(){
   }
 
   function crashDetection(){
-    if (sqrEls[snakeHeadIdx].classList.contains('snakeHead') && sqrEls[snakeHeadIdx].classList.contains('snakeBod')){
-      console.log('crash!!')
-      endGame()
+    if (boardObjs[snakeHeadIdx].snakeBod) {
+        console.log('crash!!')
+        endGame()
     }
   }
+  
+  function incrementScoreBoard(){
+    scoreBoard = snakeBody.length
+    scoreEl.textContent = `${scoreBoard}`  
+  }
+  
 
+console.log(boardObjs[snakeHeadIdx].snakeBod.length)
 
 function moveRight(){
   // snakeEl = board.indexOf(1)
