@@ -115,6 +115,10 @@ body {
   
 }
 
+.controller:hover {
+  cursor: pointer;
+}
+
 .game-operators {
   display: flex;
   position: absolute;
@@ -175,6 +179,20 @@ body {
   letter-spacing: -25px;
 }
 
+.main-container > h1 {
+  /* display: flex; */
+  /* justify-content: center; */
+  position: absolute;
+  /* margin: 0; */
+  font-size: 90px;
+  -webkit-text-stroke-color: whitesmoke;
+  -webkit-text-stroke-width: .2px;
+  /* margin-left: 25%; */
+  /* margin-top: -1.50%; */
+  top: 30px;
+  z-index: -1;
+}
+
 .board-num-div{
   width: 400px;
   height: 400px;
@@ -200,19 +218,6 @@ body {
   font-size: 35px;
 }
 
-.main-container > h1 {
-  display: flex;
-  /* justify-content: center; */
-  position: absolute;
-  /* margin: 0; */
-  font-size: 90px;
-  -webkit-text-stroke-color: whitesmoke;
-  -webkit-text-stroke-width: .2px;
-  /* margin-left: 25%; */
-  /* margin-top: -1.50%; */
-  top: 30px;
-  z-index: -1;
-}
 
 .right-btn {
   /* display: flex; */
@@ -268,6 +273,6 @@ img {
   /* size-adjust: 50%; */
   width: 400px;
   right: 250px;
-  top: 140px;
+  top: 126px;
   /* height: 100px; */
 }
