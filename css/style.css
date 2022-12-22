@@ -13,25 +13,15 @@ html {
 
 body {
   background-color: rgb(253,185,39);
-/* Use a system font, if none are available use an available sans-sarif   font */
   font-family: 'Graduate', cursive;
-  /* flex-wrap: nowrap; */
-  /* margin: 0; */
 }
 
 .main-container {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     text-align: center;
     flex-direction: column;
-    /* background-color: azure; */
-    /* min-height: 60vh; */
-    /* height: 369px; */
-    /* max-width: 35em; */
-    /* min-width: 100vh; */
     margin: 10vh 0 0 0;
-    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.150);  */
   }
 
 .game-container {
@@ -40,36 +30,18 @@ body {
   flex-wrap: nowrap;
 }
 
-/* .board {
-  background-color: rgb(18, 22, 48);
-  display: grid;
-  grid-template-columns: repeat(16,1fr);
-  grid-template-rows: repeat(16, 1fr);
-  height: 400px;
-  width: 400px;
-  border: 1px solid rgb(255, 8, 8);
-} */
-
 .board {
   display: grid;
   grid-template-columns: auto-repeate(16, 11vmin);
   grid-template-rows: auto-repeate(16, 11vmin);
-  /* grid-column: 1/17;
-  grid-row: 1/15; */
-  /* grid-gap: 0vmin; */
   width: 400px;
   height: 400px;
-  /* position: relative; */
   text-align: center;
   justify-content: center;
-  /* grid-template-columns: 100px 100px 100px ;
-  grid-template-rows: 100px 100px 100px 20px; */
-  /* justify-content: center; */
   border: 1px solid rgb(255, 255, 255);
   background-color: rgb(85,37,130);
   box-shadow: black 10px 10px 70px;
   z-index: 1;
-  /* margin-top: 10%; */
 }
 
 .wall {
@@ -78,29 +50,22 @@ body {
 }
 
 .sqr {
-  /* border: .5px solid #80CED7; */
   width: 25px;
   height: 25px;
   font-size: 8vmin;
   text-align: center;
-  /* vertical-align: middle; */
   outline-width: 2ch;
-  /* border-radius: 35% */
 }
 
 
-.snake {
+/* .snake {
   width: 25px;
   height: 25px;
   background-color: yellowgreen;
   border: 1px solid greenyellow;
   display: inline-block;
   position: absolute;
-  /* left: 0;
-  top: 0; */
-  /* grid-column-start: 8;
-  grid-row-start: 8; */
-}
+} */
 
 .controller {
   display: flex;
@@ -115,20 +80,6 @@ body {
   left: -120px;
   bottom: 40px;
   flex-direction: column;
-  /* font-size: 20px; */
-  /* padding: 10px; */
-
-  /* justify-content: center; */
-  
-}
-
-.start-btn {
-  margin: 20px;
-  font-family: 'Graduate', cursive;
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 18px;
 }
 
 .rest-btn {
@@ -137,7 +88,6 @@ body {
   border: none;
   background: none;
   font-size: 18px;
-  /* box-shadow: black 10px 10px 80px; */
 }
 
 .rest-btn:hover, .start-btn:hover {
@@ -170,15 +120,10 @@ body {
 }
 
 .main-container > h1 {
-  /* display: flex; */
-  /* justify-content: center; */
   position: absolute;
-  /* margin: 0; */
   font-size: 90px;
   -webkit-text-stroke-color: whitesmoke;
   -webkit-text-stroke-width: .2px;
-  /* margin-left: 25%; */
-  /* margin-top: -1.50%; */
   top: 30px;
   z-index: -1;
 }
@@ -225,7 +170,6 @@ body {
   background-color:#FFA12B;
   display:block;
   position:relative;
-  /* padding:0px 40px; */
   
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-shadow: 0px 1px 0px #000;
@@ -250,18 +194,13 @@ body {
 
 
 #right-btn {
-  /* display: flex; */
-  /* position: relative; */
   width: 150px;
   height: 90px;
   order: 4;
   height: 106px;
-  /* border: none; */
 }
 
 #left-btn {
-  /* display: flex; */
-  /* position: relative; */
   width: 150px;
   height: 106px;
   order: -1;
@@ -274,9 +213,6 @@ body {
 }
 
 #down-btn {
-  /* display: flex; */
-  /* position: relative; */
-  /* flex-direction: column; */
   height: 45px;
   width: 250px;
   padding-bottom: 50px;
@@ -303,7 +239,6 @@ img {
   position: absolute;
   width: 400px;
   top: 63px;
-  /* height: 100px; */
 }
 
 .win img{
