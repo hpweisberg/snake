@@ -78,7 +78,7 @@ body {
 }
 
 .sqr {
-  border: .5px solid #80CED7;
+  /* border: .5px solid #80CED7; */
   width: 25px;
   height: 25px;
   font-size: 8vmin;
@@ -100,12 +100,6 @@ body {
   top: 0; */
   /* grid-column-start: 8;
   grid-row-start: 8; */
-}
-
-.kobe{
-  width: 25px;
-  height: 25px;
-  background-image: url("../assets/kobe.png");
 }
 
 .controller {
@@ -219,7 +213,7 @@ body {
 }
 
 
-.right-btn {
+#right-btn {
   /* display: flex; */
   /* position: relative; */
   width: 150px;
@@ -227,7 +221,7 @@ body {
   order: 4;
 }
 
-.left-btn {
+#left-btn {
   /* display: flex; */
   /* position: relative; */
   width: 150px;
@@ -235,13 +229,13 @@ body {
   order: -1;
 }
 
-.up-btn {
+#up-btn {
   width: 250px;
   height: 45px;
 
 }
 
-.down-btn {
+#down-btn {
   /* display: flex; */
   /* position: relative; */
   /* flex-direction: column; */
@@ -268,11 +262,32 @@ body {
 img {
   display: flex;
   position: fixed;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* size-adjust: 50%; */
   width: 400px;
   right: 250px;
   top: 126px;
   /* height: 100px; */
+}
+
+.win img{
+  display: flex;
+  position: absolute;
+  height: 450px;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  right: 140px;
+  top: 119px;
+}
+
+.win h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 50px;
+  color: rgb(85,37,130);
+  -webkit-text-stroke-color: whitesmoke;
+  -webkit-text-stroke-width: .2px;
+  bottom: 145px;
+  text-shadow: 7px 7px 10px rgb(0, 0, 0);
 }
