@@ -68,6 +68,9 @@ const scoreEl = document.querySelector('.score-board')
 const ref = document.querySelector('.ref')
 const win = document.querySelector('.win')
 
+const foulWhistle = new Audio('../assets/referee-whistle-blow.wav')
+const swishSound = new Audio('../assets/swish-noise.mp3')
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 // sqrEls.forEach(function(sqr){
@@ -80,7 +83,10 @@ const win = document.querySelector('.win')
 // rightBtn.addEventListener('click', moveRight)
 // leftBtn.addEventListener('click', moveLeft)
 document.querySelector('body').addEventListener('keydown', changeDirection)
-document.getElementById('up-btn').addEventListener('click', checkForBtnClick)
+document.getElementById('up-btn').addEventListener('click', changeDirection)
+document.getElementById('right-btn').addEventListener('click', changeDirection)
+document.getElementById('down-btn').addEventListener('click', changeDirection)
+document.getElementById('left-btn').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
 // controllerEl.addEventListener('click', function(evt){
 //   if (evt.target(rightBtn)){
@@ -182,36 +188,16 @@ function changeDirection(evt){
     console.log(evt)
   }
   console.log(evt.target.id)
-  if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.target.id === upBtn && currentDirection != 's'){
+  if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.target.id === 'up-btn' && currentDirection != 's'){
     currentDirection = 'n'
     console.log('up is pressed')
-  } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
+  } else if (evt.key === 'ArrowRight' && currentDirection != 'w' || evt.target.id === 'right-btn' && currentDirection != 'w'){
     currentDirection = 'e'
     console.log('right is pressed')
-  } else if (evt.key === 'ArrowDown' && currentDirection != 'n'){
+  } else if (evt.key === 'ArrowDown' && currentDirection != 'n' || evt.target.id === 'down-btn' && currentDirection != 'n'){
     currentDirection = 's'
     console.log('down is pressed')
-  } else if (evt.key === 'ArrowLeft' && currentDirection != 'e'){
-    currentDirection = 'w'
-    console.log('left is pressed')
-  }
-}
-
-function checkForBtnClick(evt){
-  if (!moveInterval) {
-    render()
-    console.log(evt)
-  }
-  if (evt.target.id === 'upBtn' && currentDirection != 's'){
-    currentDirection = 'n'
-    console.log('up is pressed')
-  } else if (evt.key === 'ArrowRight' && currentDirection != 'w'){
-    currentDirection = 'e'
-    console.log('right is pressed')
-  } else if (evt.key === 'ArrowDown' && currentDirection != 'n'){
-    currentDirection = 's'
-    console.log('down is pressed')
-  } else if (evt.key === 'ArrowLeft' && currentDirection != 'e'){
+  } else if (evt.key === 'ArrowLeft' && currentDirection != 'e' || evt.target.id === 'left-btn' && currentDirection != 'e'){
     currentDirection = 'w'
     console.log('left is pressed')
   }
@@ -411,6 +397,8 @@ function endGame(){
   clearInterval(moveInterval)
   console.log('play again?')
   ref.style.display = 'flex'
+  foulWhistle.volume = .5
+  foulWhistle.play()
 }
 
 function youWin(){
