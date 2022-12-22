@@ -4,14 +4,17 @@ Mamba, a take on the classic game of Snake. Players help Kobe secure as many Lar
 
 Use your keyboard arrow keys or the on screen buttons to start the game and change directions. The game will end if you run into a wall or Kobe's trophies.
 
-## [Play Mamba Here](https://harrison-snake.netlify.app/)
 
-## Technologies used 💾
+# [Play Mamba Here!](https://harrison-snake.netlify.app/)
+
+![MAMBA Game Screenshot](./assets/game-screenshot.png)
+
+# Technologies used 💾
 - HTML
 - CSS
 - JavaScript
 
-## Ice Box 🧊
+# Ice Box 🧊
 - Add basketball animations
 - Add Kobe face turns on direction change
 - Add dificulty settings
