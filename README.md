@@ -15,8 +15,8 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 - JavaScript
 
 # Ice Box 🧊
-- Add basketball animations
-- Add Kobe face turns on direction change
-- Add dificulty settings
-- Add highscore tracker 
-- Add pause function
+- [ ] Add basketball animations
+- [ ] Add Kobe face turns on direction change
+- [ ] Add dificulty settings
+- [ ] Add highscore tracker 
+- [ ] Add pause function
