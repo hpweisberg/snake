@@ -402,7 +402,7 @@ function endGame(){
   ref.style.display = 'flex'
   foulWhistle.volume = .3
   foulWhistle.play()
-  render()
+  // render()
 }
 
 function youWin(){
