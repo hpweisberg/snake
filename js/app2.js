@@ -114,13 +114,14 @@ function init(){
 }
 
 function render(){
-  console.log(speedVal)
+  // console.log(speedVal)
+  // clearInterval(moveInterval)
   console.log(moveInterval)
   moveInterval = setInterval(() => {
-    console.log('after intervallklklk')
+    // console.log('after intervallklklk')
     moveSnakeHead()
-    console.log(snakeHeadIdx, 'snakeheadidx')
-    console.log(currentDirection, 'currentDir')
+    // console.log(snakeHeadIdx, 'snakeheadidx')
+    // console.log(currentDirection, 'currentDir')
     generateSqrElements()
     checkForFood()
     crashDetection()
@@ -388,17 +389,20 @@ function reset(){
   boardEl.style.backgroundColor = 'rgb(85,37,130)'
   ref.style.display = 'none'
   win.style.display = 'none'
+  // clearInterval(moveInterval)
 }
 
 function endGame(){
-  setInterval = null
+  clearInterval(moveInterval)
+  // moveInterval = null
   currentDirection = null
   boardEl.style.backgroundColor = 'red'
-  clearInterval(moveInterval)
+  // speedVal = 0
   console.log('play again?')
   ref.style.display = 'flex'
-  foulWhistle.volume = .5
+  foulWhistle.volume = .3
   foulWhistle.play()
+  render()
 }
 
 function youWin(){
