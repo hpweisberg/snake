@@ -14,6 +14,9 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 - CSS
 - JavaScript
 
+# Credits 🙌
+Special thanks to @jemware for the button design.
+
 # Ice Box 🧊
 - [ ] Add basketball animations
 - [ ] Add Kobe face turns on direction change
