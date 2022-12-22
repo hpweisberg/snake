@@ -16,7 +16,7 @@ let topWall = 2
 let rightWall = 2
 let bottomWall = 2
 let leftWall = 2
-let score
+let score 
 let win, lose, pause, loction
 
 let columnCounter = 0

@@ -402,7 +402,7 @@ function endGame(){
 }
 
 function youWin(){
-  if (snakeBody.length === 254){
+  if (snakeBody.length > 253){
     win.style.display = 'flex'
     clearInterval(moveInterval)
   }

@@ -18,8 +18,8 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 Special thanks to @jemware for the button design.
 
 # Ice Box 🧊
-- [ ] Add basketball animations
-- [ ] Add Kobe face turns on direction change
-- [ ] Add dificulty settings
-- [ ] Add highscore tracker 
-- [ ] Add pause function
+- [ ] Basketball animations
+- [ ] Kobe face turns on direction change
+- [ ] Dificulty settings
+- [ ] Highscore tracker 
+- [ ] Pause function

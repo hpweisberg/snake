@@ -14,6 +14,7 @@ html {
 body {
   background-color: rgb(253,185,39);
   font-family: 'Graduate', cursive;
+  overflow-x: hidden;
 }
 
 .main-container {
@@ -21,7 +22,7 @@ body {
     align-items: center;
     text-align: center;
     flex-direction: column;
-    margin: 10vh 0 0 0;
+    margin: 0 0 0 0;
   }
 
 .game-container {
@@ -121,10 +122,10 @@ body {
 
 .main-container > h1 {
   position: absolute;
-  font-size: 90px;
+  font-size: 120px;
   -webkit-text-stroke-color: whitesmoke;
   -webkit-text-stroke-width: .2px;
-  top: 30px;
+  top: -80px;
   z-index: -1;
 }
 
@@ -135,22 +136,35 @@ body {
   top: 100px;
 }
 
-.score-board {
+.score-div {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: -130px;
+}
+
+.score-board {
+  margin: 0;
+  /* display: flex;
   float: right;
   position: absolute;
   top: 45px;
   right: -115px;
-  font-size: 35px;
+  font-size: 35px; */
 }
 
 .score-sign {
   display: flex;
-  float: right;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  /* float: right;
   position: absolute;
   top: 0px;
   right: -160px;
-  font-size: 35px;
+  font-size: 35px; */
 }
 
 
@@ -220,36 +234,45 @@ body {
 
 .ref {
   display: flex;
-  position: fixed;
+  position: relative;
+  justify-content: center;
+  right: 190px;
+  top: -92px;
+}
+
+.ref-img {
+  scale: 75%;
+  position: absolute;
 }
 
 .ref h1 {
   color: rgb(85,37,130);
-  font-size: 45px;
+  font-size: 65px;
   -webkit-text-stroke-color: whitesmoke;
   -webkit-text-stroke-width: .2px;
-  position: relative;
+  position: absolute;
   display: flex;
   top: 280px;
+  left: -195px;
   text-shadow: 7px 7px 10px rgb(0, 0, 0);
 }
 
-img {
+/* img {
   display: flex;
   position: absolute;
   width: 400px;
   top: 63px;
-}
+} */
 
 .win img{
   display: flex;
-  position: absolute;
+  position: relative;
   height: 450px;
   width: auto;
   justify-content: center;
   align-items: center;
-  right: 140px;
-  top: 119px;
+  right: -300px;
+  top: -350px;
 }
 
 .win h1 {
@@ -261,6 +284,227 @@ img {
   color: rgb(85,37,130);
   -webkit-text-stroke-color: whitesmoke;
   -webkit-text-stroke-width: .2px;
-  bottom: 145px;
+  bottom: 345px;
+  right: 245px;
   text-shadow: 7px 7px 10px rgb(0, 0, 0);
+}
+
+.win h1:last-child {
+  right: 550px;
+  bottom: 250px;
+}
+
+
+
+/* !!!!!!! Mobile phone design !!!!!!! */
+
+@media (max-width: 480px) {
+  body {
+    background-color: red;
+    overflow-x: hidden;
+    max-width: 85%;
+    
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: auto-repeate(16, 11vmin);
+    grid-template-rows: auto-repeate(16, 11vmin);
+    max-width: 300px;
+    max-height: 300px;
+    /* text-align: center; */
+    /* justify-content: center; */
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(85,37,130);
+    box-shadow: black 10px 10px 70px;
+    z-index: 1;
+    left: 50px;
+    /* margin-left: 12.5%; */
+  }
+
+  .sqr {
+    border: 2.8px solid #80CED7;
+    width: 18.75px;
+    height: 18.75px;
+    font-size: 8vmin;
+    text-align: center;
+    outline-width: 2ch;
+  }
+
+  .board-num-div{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    top: 100px;
+    left: 20px;
+  }
+
+  #eight {
+    /* position: absolute;
+    left: -130px;
+    top: -260px;
+    z-index: -1;
+    font-size: 300px; */
+    display: none;
+  }
+  #twentyfour {
+    /* position: absolute;
+    right: -250px;
+    top: -150px;
+    font-size: 300px;
+    letter-spacing: -25px; */
+    display: none;
+  }
+
+  .score-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* bottom: -480px; */
+    top: 300px;
+    left: 140px;
+    width: 10%;
+    height: 100%;
+  }
+  
+  .score-board {
+    margin: 0;
+    /* display: flex;
+    float: right;
+    position: absolute;
+    top: 45px;
+    right: -115px; */
+    font-size: 28px;
+  }
+  
+  .score-sign {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    /* float: right;
+    position: absolute;
+    top: 0px;
+    right: -160px; */
+    font-size: 28px;
+  }
+
+  .rest-btn {
+    font-family: 'Graduate', cursive;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 18px;
+    display: none;
+  }
+
+  /* .controller {
+    height: auto;
+  } */
+
+  .updown {
+    max-height: 90px;
+  }
+  
+  #right-btn {
+    width: 80px;
+    height: 90px;
+    order: 4;
+    /* height: 106px; */
+  }
+
+  #left-btn {
+    width: 80px;
+    height: 90px;
+    order: -1;
+  }
+
+  #up-btn {
+    width: 150px;
+    height: 44px;
+    padding-bottom: 42px;
+    font-size: 28px;
+  }
+
+  #down-btn {
+    height: 44px;
+    font-size: 28px;
+    width: 150px;
+    padding-bottom: 42px;
+  }
+
+  .main-container > h1 {
+    position: absolute;
+    font-size: 90px;
+    -webkit-text-stroke-color: whitesmoke;
+    -webkit-text-stroke-width: .2px;
+    top: -30px;
+    left: 9px;
+    z-index: -1;
+  }
+
+  .ref {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    right: 190px;
+    top: -129px;
+  }
+  
+  .ref-img {
+    scale: 55%;
+    position: absolute;
+  }
+  
+  .ref h1 {
+    color: rgb(85,37,130);
+    font-size: 55px;
+    -webkit-text-stroke-color: whitesmoke;
+    -webkit-text-stroke-width: .2px;
+    position: absolute;
+    display: flex;
+    top: 280px;
+    left: -164px;
+    text-shadow: 7px 7px 10px rgb(0, 0, 0);
+  }
+
+  .win img{
+    display: flex;
+    position: absolute;
+    height: 350px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    right: -50px;
+    top: 60px;
+  }
+  
+  .win h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 35px;
+    color: rgb(85,37,130);
+    -webkit-text-stroke-color: whitesmoke;
+    -webkit-text-stroke-width: .2px;
+    bottom: 255px;
+    left: 1px;
+    text-shadow: 7px 7px 10px rgb(0, 0, 0);
+  }
+  .win h1:last-child {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: absolute;
+    font-size: 50px;
+    color: rgb(85,37,130);
+    -webkit-text-stroke-color: whitesmoke;
+    -webkit-text-stroke-width: .2px;
+    bottom: 300px;
+    left: 190px;
+    text-shadow: 7px 7px 10px rgb(0, 0, 0);
+  }
+  
 }

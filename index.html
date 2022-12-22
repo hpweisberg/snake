@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
-  <link 
-  id="favicon" 
-  rel="icon"
-  href="./assets/kobe.png"
-  type="image/png" 
-  sizes="32x32"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
+  <link id="favicon" rel="icon" href="./assets/kobe.png" type="image/png" sizes="32x32">
   <script defer src="./js/app2.js"></script>
   <title>Snake</title>
 </head>
+
 <body>
   <!-- div. -->
 
@@ -29,40 +27,43 @@
         <section class="board">
           <!-- <div class="snake"></div>
             <div class="food"></div> -->
-          </section>
-          <h1 class="background-numbers" id="eight">8</h1>
-          <h1 class="background-numbers" id="twentyfour">24</h1>
-          <div class="controller">
-            <button id="right-btn">➡</button>
-              <div class="updown">
-                <button id="up-btn">⬆</button>
-                <button id="down-btn">⬇</button>
-              </div>  
-            <button id="left-btn">⬅</button>
+        </section>
+        <h1 class="background-numbers" id="eight">8</h1>
+        <h1 class="background-numbers" id="twentyfour">24</h1>
+        <div class="controller">
+          <button id="right-btn">➡</button>
+          <div class="updown">
+            <button id="up-btn">⬆</button>
+            <button id="down-btn">⬇</button>
           </div>
-          <div class="game-operators">
-            <!-- <button class="start-btn">Play Ball</button> -->
-            <button class="rest-btn">Rematch?</button>
-          </div>
+          <button id="left-btn">⬅</button>
+        </div>
+        <div class="game-operators">
+          <!-- <button class="start-btn">Play Ball</button> -->
+          <button class="rest-btn">Rematch?</button>
+        </div>
+        <div class="score-div">
           <h2 class="score-sign">SCORE: </h2>
           <h2 class="score-board"></h2>
         </div>
-        <div class="ref">
-          <img src="../assets/ref-foul.png" alt="">
-          <h1>TECHNICAL FOUL!</h1>
-        </div>
-      </section>
-      <div class="win">
-        <img src="../assets/kobe-happy.png" alt="">
-        <h1>CONGRATULATIONS!</h1>
-        <h1>YOU WIN!</h1>
       </div>
-      
-      
+      <div class="ref">
+        <img class="ref-img" src="../assets/ref-foul.png" alt="">
+        <h1>TECHNICAL FOUL!</h1>
+      </div>
+    </section>
+    <div class="win">
+      <img src="../assets/kobe-happy.png" alt="">
+      <h1>CONGRATULATIONS!</h1>
+      <h1>YOU WIN!</h1>
+    </div>
+
+
     <!-- <div class="background-numbers">
       <h1 id="eight">8</h1>
       <h1 id="twentyfour">24</h1>
     </div> -->
   </div>
 </body>
+
 </html>
