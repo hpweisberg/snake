@@ -50,7 +50,7 @@ let boardObjs
 let scoreBoard = 0
 let leftWallEl = [0, 16, 32, 48, 52, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240]
 let northWallEl = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-let speedVal = 1000
+let speedVal = 500
 
 // let foodItem
 
@@ -257,49 +257,50 @@ function snakeBodyExtension(){
   function changeSpeed(){
     if (scoreBoard === 0){
       clearInterval(moveInterval)
-      speedVal = 700
+      speedVal = 500
       render()
     } if (scoreBoard > 4){
       clearInterval(moveInterval)
-      speedVal = 650
+      speedVal = 450
       render()
     } if (scoreBoard > 9){
       clearInterval(moveInterval)
-      speedVal = 600
+      speedVal = 400
       render()
     } if (scoreBoard > 14){
       clearInterval(moveInterval)
-      speedVal = 550
+      speedVal = 350
       render()
     } if (scoreBoard > 19){
       clearInterval(moveInterval)
-      speedVal = 500
-      render()
-    } if (scoreBoard > 24){
-      clearInterval(moveInterval)
-      speedVal = 450
+      speedVal = 300
       render()
     } if (scoreBoard > 29){
       clearInterval(moveInterval)
-      speedVal = 400
-      render()
-    } if (scoreBoard > 34){
-      clearInterval(moveInterval)
-      speedVal = 350
+      speedVal = 250
       render()
     } if (scoreBoard > 39){
       clearInterval(moveInterval)
-      speedVal = 300
-      render()
-    } if (scoreBoard > 44){
-      clearInterval(moveInterval)
-      speedVal = 250
+      speedVal = 200
       render()
     } if (scoreBoard > 49){
       clearInterval(moveInterval)
-      speedVal = 200
+      speedVal = 150
+      render()
+    } if (scoreBoard > 59){
+      clearInterval(moveInterval)
+      speedVal = 100
       render()
     }
+    // } if (scoreBoard > 44){
+    //   clearInterval(moveInterval)
+    //   speedVal = 50
+    //   render()
+    // } if (scoreBoard > 49){
+    //   clearInterval(moveInterval)
+    //   speedVal = 50
+    //   render()
+    // }
   }
 
 console.log(boardObjs[snakeHeadIdx].snakeBod.length)
@@ -400,7 +401,7 @@ function endGame(){
   // speedVal = 0
   console.log('play again?')
   ref.style.display = 'flex'
-  foulWhistle.volume = .3
+  foulWhistle.volume = .05
   foulWhistle.play()
   // render()
 }
