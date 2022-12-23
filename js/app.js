@@ -124,28 +124,19 @@ function generateSqrElements(){
 function renderGameElements(boardObjs){
   sqrEls.forEach((el, idx) => {
     if (boardObjs[idx].food){
-      el.style.backgroundImage = "url('../assets/ball.png')"
-      el.style.backgroundPosition = 'center'
-      el.style.backgroundSize = 'cover'
-      el.style.backgroundRepeat = 'no-repeat'
+      el.innerHTML = "<img id='food-Ball' src='../assets/ball.png'>"
+      document.querySelector('#food-Ball').style.height = '25px'
+      document.querySelector('#food-Ball').style.width = 'auto'
     } if (boardObjs[idx].snakeHead){
       el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
       document.querySelector('#kobe').style.height = '40px'
       document.querySelector('#kobe').style.width = 'auto'
     } else if (boardObjs[idx].snakeBod){
-      el.style.backgroundImage = "url('../assets/trophy-ball.png')"
-      el.style.backgroundPosition = 'center'
-      el.style.backgroundSize = 'cover'
-      el.style.backgroundRepeat = 'no-repeat'
+      el.innerHTML = "<img id='trophy' src='../assets/trophy-ball.png'>"
+      document.querySelector('#trophy').style.height = '25px'
+      document.querySelector('#trophy').style.width = 'auto'
+    } else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBodyArr){
       el.innerHTML = ''
-    }
-    else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBodyArr){
-      el.style.backgroundColor = ''
-      el.style.backgroundImage = ''
-      el.innerHTML = ''
-      el.style.backgroundPosition = 'center'
-      el.style.backgroundSize = 'cover'
-      el.style.backgroundRepeat = 'no-repeat'
     } 
   })
 }
@@ -200,81 +191,81 @@ function checkForFood(){
 }
 
 function snakeBodyExtension(){
-    if (snakeBodyArr.length) {
-      snakeBodyArr.unshift(snakeHeadIdx)
-      snakeBodyArr.pop()
-    }
+  if (snakeBodyArr.length) {
+    snakeBodyArr.unshift(snakeHeadIdx)
+    snakeBodyArr.pop()
   }
+}
 
-  //! Score/Speed control
+//! Score/Speed control
 
-  function incrementScoreBoard(){
-    scoreBoard = snakeBodyArr.length
-    scoreEl.textContent = `${scoreBoard}`  
-    changeSpeed()
+function incrementScoreBoard(){
+  scoreBoard = snakeBodyArr.length
+  scoreEl.textContent = `${scoreBoard}`  
+  changeSpeed()
+}
+
+function changeSpeed(){
+  if (scoreBoard < 1){
+    clearInterval(moveInterval)
+    speedVal = 400
+    render()
+  } if (scoreBoard > 4){
+    clearInterval(moveInterval)
+    speedVal = 350
+    render()
+  } if (scoreBoard > 9){
+    clearInterval(moveInterval)
+    speedVal = 300
+    render()
+  } if (scoreBoard > 14){
+    clearInterval(moveInterval)
+    speedVal = 250
+    render()
+  } if (scoreBoard > 19){
+    clearInterval(moveInterval)
+    speedVal = 200
+    render()
+  } if (scoreBoard > 29){
+    clearInterval(moveInterval)
+    speedVal = 150
+    render()
+  } if (scoreBoard > 39){
+    clearInterval(moveInterval)
+    speedVal = 100
+    render()
+  } if (scoreBoard > 99){
+    clearInterval(moveInterval)
+    speedVal = 75
+    render()
   }
-  
-  function changeSpeed(){
-    if (scoreBoard < 1){
-      clearInterval(moveInterval)
-      speedVal = 400
-      render()
-    } if (scoreBoard > 4){
-      clearInterval(moveInterval)
-      speedVal = 350
-      render()
-    } if (scoreBoard > 9){
-      clearInterval(moveInterval)
-      speedVal = 300
-      render()
-    } if (scoreBoard > 14){
-      clearInterval(moveInterval)
-      speedVal = 250
-      render()
-    } if (scoreBoard > 19){
-      clearInterval(moveInterval)
-      speedVal = 200
-      render()
-    } if (scoreBoard > 29){
-      clearInterval(moveInterval)
-      speedVal = 150
-      render()
-    } if (scoreBoard > 39){
-      clearInterval(moveInterval)
-      speedVal = 100
-      render()
-    } if (scoreBoard > 99){
-      clearInterval(moveInterval)
-      speedVal = 75
-      render()
-    }
-  }
-  
-  //! Ending game functions
-  
-  function hitWall(){
-    if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
-      endGame()
-    } if (sqrEls[snakeHeadIdx+1].classList.contains('wWall')) {
-      setTimeout(() => {
-        if (currentDirection === 'e') {
-          endGame()
-        }
-      }, speedVal-10)
-    } if (sqrEls[snakeHeadIdx-1].classList.contains('eWall')) {
-      setTimeout(() => {
-        if (currentDirection === 'w') {
-          endGame()
-        }
-      }, speedVal-10)
-    }
-  }
-  
-  function crashDetection(){
-    if (boardObjs[snakeHeadIdx].snakeBod) {
+}
+
+//! Ending game functions
+
+function hitWall(){
+  if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
+    endGame()
+  } if (sqrEls[snakeHeadIdx + 1].classList.contains('wWall')) {
+    setTimeout(() => {
+      if (currentDirection === 'e') {
         endGame()
-    } return
+      }
+    }, speedVal-10)
+  } if (sqrEls[snakeHeadIdx - 1].classList.contains('eWall')) {
+    setTimeout(() => {
+      if (currentDirection === 'w') {
+        endGame()
+      }
+    }, speedVal-10)
   }
+}
+
+function crashDetection(){
+  if (boardObjs[snakeHeadIdx].snakeBod) {
+    endGame()
+  } return
+}
 
 function endGame(){
   clearInterval(moveInterval)
