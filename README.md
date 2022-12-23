@@ -21,6 +21,8 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 ## Planning matrial 📕
 ---
 ## [Pseudocode](https://docs.google.com/document/d/1TEJkIB5uubCW0JDVM64F5_dmlGbBcCfhMJ09kc_D4AM/edit)
+The image below was the original layout of the game:
+
 ![MAMBA Game Screenshot](./assets/app-sketch.png)
 
 ## Ice Box 🧊
