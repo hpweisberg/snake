@@ -265,40 +265,40 @@ function snakeBodyExtension(){
   function changeSpeed(){
     if (scoreBoard === 0){
       clearInterval(moveInterval)
-      speedVal = 500
+      speedVal = 400
       render()
     } if (scoreBoard > 4){
       clearInterval(moveInterval)
-      speedVal = 450
+      speedVal = 350
       render()
     } if (scoreBoard > 9){
       clearInterval(moveInterval)
-      speedVal = 400
+      speedVal = 300
       render()
     } if (scoreBoard > 14){
       clearInterval(moveInterval)
-      speedVal = 350
+      speedVal = 250
       render()
     } if (scoreBoard > 19){
       clearInterval(moveInterval)
-      speedVal = 300
+      speedVal = 200
       render()
     } if (scoreBoard > 29){
       clearInterval(moveInterval)
-      speedVal = 250
+      speedVal = 150
       render()
     } if (scoreBoard > 39){
       clearInterval(moveInterval)
-      speedVal = 200
-      render()
-    } if (scoreBoard > 49){
-      clearInterval(moveInterval)
-      speedVal = 150
-      render()
-    } if (scoreBoard > 59){
-      clearInterval(moveInterval)
       speedVal = 100
       render()
+    // } if (scoreBoard > 49){
+    //   clearInterval(moveInterval)
+    //   speedVal = 150
+    //   render()
+    // } if (scoreBoard > 59){
+    //   clearInterval(moveInterval)
+    //   speedVal = 100
+    //   render()
     }
     // } if (scoreBoard > 44){
     //   clearInterval(moveInterval)

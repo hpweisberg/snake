@@ -7,19 +7,25 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 
 # [Play Mamba Here!](https://harrison-snake.netlify.app/)
 
-![MAMBA Game Screenshot](./assets/game-screenshot.png)
+![MAMBA Game Screenshot](./assets/game-play-img.png)
 
 # Technologies used 💾
 - HTML
 - CSS
 - JavaScript
 
+# Planning matrial 📕
+## [Pseudocode](https://docs.google.com/document/d/1TEJkIB5uubCW0JDVM64F5_dmlGbBcCfhMJ09kc_D4AM/edit)
+![MAMBA Game Screenshot](./assets/app-sketch.png)
+
 # Credits 🙌
 Special thanks to @jemware for the button design.
 
 # Ice Box 🧊
+- [ ] Update rematch button
 - [ ] Basketball animations
 - [ ] Kobe face turns on direction change
-- [ ] Dificulty settings
+- [ ] Difficulty settings
 - [ ] Highscore tracker 
 - [ ] Pause function
+- [ ] Additional audio
