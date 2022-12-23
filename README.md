@@ -16,7 +16,7 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 - CSS
 - JavaScript
 
-## Planning matrial 📕
+## Planning Matrial 📕
 
 ## [Original game pseudocode](https://docs.google.com/document/d/1TEJkIB5uubCW0JDVM64F5_dmlGbBcCfhMJ09kc_D4AM/edit)
 The image below was the original layout of the game:
@@ -36,3 +36,9 @@ The image below was the original layout of the game:
 ## Credits 🙌
 
 Special thanks to @jemware for the button design.
+
+## Known Bugs 🛠️
+
+- Sound loop on body crash
+- Flashing snake head on mobile
+- Sqr #255 detection issue 

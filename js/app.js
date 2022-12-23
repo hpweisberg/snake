@@ -47,7 +47,6 @@ let snakeHeadIdx
 let sqrEls
 let speedVal = 400
 
-
 /*------------------------ Cached Element References ------------------------*/
 
 const boardEl = document.querySelector('.board')
@@ -73,7 +72,6 @@ document.getElementById('right-btn').addEventListener('click', changeDirection)
 document.getElementById('down-btn').addEventListener('click', changeDirection)
 document.getElementById('left-btn').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
-
 
 /*-------------------------------- Functions --------------------------------*/
 init()
