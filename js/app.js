@@ -60,7 +60,7 @@ const rightBtn = document.getElementById('.right-btn')
 const scoreEl = document.querySelector('.score-board')
 const win = document.querySelector('.win')
 
-//! Audio Element Refernces
+//! Audio element Refernces
 const foulWhistle = new Audio('../assets/referee-whistle-blow.wav')
 const swishSound = new Audio('../assets/swish-noise.mp3')
 
@@ -106,7 +106,7 @@ function render(){
   }, speedVal);
 }
 
-//! Generate/Display sqr elemnts
+//! Generate/Display sqr elements
 
 function generateSqrElements(){
   boardObjs = []
