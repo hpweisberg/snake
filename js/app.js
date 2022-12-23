@@ -154,23 +154,27 @@ function renderGameElements(boardObjs){
       el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
     } if (boardObjs[idx].snakeHead){
-      // el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
-      // document.querySelector('#kobe').style.height = '50px'
-      // document.querySelector('#kobe').style.width = 'auto'
+      // el.id = 'kobe'
+      el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
+      document.querySelector('#kobe').style.height = '40px'
+      document.querySelector('#kobe').style.width = 'auto'
+      document.querySelector('#kobe').style.align = 'middle'
       // el.style.backgroundPosition = 'center'
       // el.style.backgroundSize = '200%'
-      // el.style.backgroundRepeat = 'no-repeat'
-      // el.style.overflow = 'visible'
-      // el.style.height = '40px'
-      el.style.backgroundImage = "url('../assets/kobe.png')"
-      el.style.backgroundPosition = 'center'
-      el.style.backgroundSize = 'contain'
       el.style.backgroundRepeat = 'no-repeat'
+      // el.style.overflow = 'visible'
+      console.log(idx, 'the SNAKE HEAD')
+      // el.style.height = '40px'
+      // el.style.backgroundImage = "url('../assets/kobe.png')"
+      // el.style.backgroundPosition = 'center'
+      // el.style.backgroundSize = 'contain'
+      // el.style.backgroundRepeat = 'no-repeat'
     } else if (boardObjs[idx].snakeBod){
       el.style.backgroundImage = "url('../assets/trophy-ball.png')"
       el.style.backgroundPosition = 'center'
       el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
+      el.id = ''
     }
     else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBody){
       el.style.backgroundColor = ''
