@@ -4,8 +4,6 @@ A take on the classic game of Snake. Players help NBA legend Kobe Bryant, aka, "
 
 ## Getting Started 🐍
 
----
-
 Use your keyboard arrow keys or the on screen buttons to start the game and change directions. The game will end if you run into a wall or Kobe's trophies.
 
 # [Play Mamba Here!](https://harrison-snake.netlify.app/)
@@ -13,20 +11,20 @@ Use your keyboard arrow keys or the on screen buttons to start the game and chan
 ![MAMBA Game Screenshot](./assets/game-play-img.png)
 
 ## Technologies Used 💾
----
+
 - HTML
 - CSS
 - JavaScript
 
 ## Planning matrial 📕
----
+
 ## [Pseudocode](https://docs.google.com/document/d/1TEJkIB5uubCW0JDVM64F5_dmlGbBcCfhMJ09kc_D4AM/edit)
 The image below was the original layout of the game:
 
 ![MAMBA Game Screenshot](./assets/app-sketch.png)
 
 ## Ice Box 🧊
----
+
 - [ ] Update rematch button
 - [ ] Basketball animations
 - [ ] Kobe face turns on direction change
@@ -36,5 +34,5 @@ The image below was the original layout of the game:
 - [ ] Additional audio
 
 ## Credits 🙌
----
+
 Special thanks to @jemware for the button design.
