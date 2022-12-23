@@ -58,7 +58,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2.8px solid #80CED7;
+  /* border: 2.8px solid #80CED7; */
   width: 25px;
   height: 25px;
   font-size: 8vmin;
@@ -66,10 +66,11 @@ body {
   outline-width: 2ch;
 }
 
-/* #kobe {
-  background: url(../assets/kobe.png) no-repeat center;
-  background-size: 200%;
-} */
+#kobe {
+  height: 40px;
+  width: 40px;
+  z-index: 4;
+}
 
 /* .snake {
   width: 25px;

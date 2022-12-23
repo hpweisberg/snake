@@ -158,12 +158,12 @@ function renderGameElements(boardObjs){
       el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
       document.querySelector('#kobe').style.height = '40px'
       document.querySelector('#kobe').style.width = 'auto'
-      document.querySelector('#kobe').style.align = 'middle'
+      // document.querySelector('#kobe').style.align = 'middle'
+      // el.style.backgroundRepeat = 'no-repeat'
+      console.log(idx, 'the SNAKE HEAD')
       // el.style.backgroundPosition = 'center'
       // el.style.backgroundSize = '200%'
-      el.style.backgroundRepeat = 'no-repeat'
       // el.style.overflow = 'visible'
-      console.log(idx, 'the SNAKE HEAD')
       // el.style.height = '40px'
       // el.style.backgroundImage = "url('../assets/kobe.png')"
       // el.style.backgroundPosition = 'center'
@@ -174,7 +174,8 @@ function renderGameElements(boardObjs){
       el.style.backgroundPosition = 'center'
       el.style.backgroundSize = 'cover'
       el.style.backgroundRepeat = 'no-repeat'
-      el.id = ''
+      // el.id = ''
+      el.innerHTML = ""
     }
     else if (!boardObjs[idx].snakeHead && !boardObjs[idx].food && !boardObjs[idx].snakeBody){
       el.style.backgroundColor = ''
@@ -233,7 +234,10 @@ function checkForFood(){
   
   if (snakeHeadIdx === foodItemIdx){
     snakeBody.push(1)
-    foodItemIdx = generateFoodItem()
+    do {
+      foodItemIdx = generateFoodItem()
+    } while (boardObjs[foodItemIdx].snakeHead || boardObjs[foodItemIdx].snakeBod)
+
     console.log('eat food')
   }
 }
