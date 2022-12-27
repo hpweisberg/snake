@@ -95,7 +95,6 @@ function render(){
   moveInterval = setInterval(() => {
     moveSnakeHead()
     generateSqrElements()
-    console.log(snakeHeadIdx)
     checkForFood()
     crashDetection()
     incrementScoreBoard()
@@ -263,6 +262,7 @@ function hitWall(){
 function crashDetection(){
   if (boardObjs[snakeHeadIdx].snakeBod) {
     endGame()
+    clearInterval(moveInterval)
   } return
 }
 

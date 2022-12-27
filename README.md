@@ -40,5 +40,5 @@ Special thanks to @jemware for the button design.
 ## Known Bugs 🛠️
 
 - Sound loop on body crash
-- Flashing snake head on mobile
-- Sqr #255 detection issue 
+- [FIXED] Flashing snake head on mobile
+- [FIXED] Sqr #255 detection issue 
