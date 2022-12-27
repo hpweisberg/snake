@@ -95,6 +95,7 @@ function render(){
   moveInterval = setInterval(() => {
     moveSnakeHead()
     generateSqrElements()
+    console.log(snakeHeadIdx)
     checkForFood()
     crashDetection()
     incrementScoreBoard()
@@ -244,13 +245,13 @@ function changeSpeed(){
 function hitWall(){
   if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
     endGame()
-  } if (sqrEls[snakeHeadIdx + 1].classList.contains('wWall')) {
+  } if (snakeHeadIdx === 255 || sqrEls[snakeHeadIdx + 1].classList.contains('wWall')) {
     setTimeout(() => {
       if (currentDirection === 'e') {
         endGame()
       }
     }, speedVal-10)
-  } if (sqrEls[snakeHeadIdx - 1].classList.contains('eWall')) {
+  } if (snakeHeadIdx === 0 || sqrEls[snakeHeadIdx - 1].classList.contains('eWall')) {
     setTimeout(() => {
       if (currentDirection === 'w') {
         endGame()
