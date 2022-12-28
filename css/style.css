@@ -174,7 +174,6 @@ body {
 
 
 #right-btn, #left-btn, #up-btn, #down-btn {
-  border-radius: 5px;
   cursor: pointer;
   border: 1px solid rgb(85,37,130);
   color:white;
@@ -207,7 +206,6 @@ body {
 
 #right-btn {
   width: 150px;
-  height: 90px;
   order: 4;
   height: 106px;
 }
@@ -267,6 +265,7 @@ body {
   align-items: center;
   right: -300px;
   top: -350px;
+  z-index: 4;
 }
 
 .win h1 {
@@ -281,6 +280,7 @@ body {
   bottom: 345px;
   right: 245px;
   text-shadow: 7px 7px 10px rgb(0, 0, 0);
+  z-index: 5;
 }
 
 .win h1:last-child {
@@ -305,14 +305,11 @@ body {
     grid-template-rows: auto-repeate(16, 11vmin);
     max-width: 300px;
     max-height: 300px;
-    /* text-align: center; */
-    /* justify-content: center; */
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(85,37,130);
     box-shadow: black 10px 10px 70px;
     z-index: 1;
     left: 50px;
-    /* margin-left: 12.5%; */
   }
 
   .sqr {
@@ -371,7 +368,7 @@ body {
     font-size: 18px;
     display: flex;
     position: absolute;
-    left: 230px;
+    left: 225px;
     top: 250px;
   }
 
@@ -438,7 +435,7 @@ body {
     position: absolute;
     display: flex;
     top: 280px;
-    left: -164px;
+    left: -190px;
     text-shadow: 7px 7px 10px rgb(0, 0, 0);
     z-index: 3;
   }
