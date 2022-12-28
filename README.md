@@ -40,5 +40,6 @@ Special thanks to @jemware for the button design.
 ## Known Bugs 🛠️
 
 - Sound loop on body crash after using Rematch button
-- [FIXED] Flashing snake head on mobile
+- Flashing snake head on mobile
 - [FIXED] Sqr #255 detection issue 
+- [FIXED] Mobile button showing emojis
