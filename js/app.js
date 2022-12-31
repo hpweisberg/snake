@@ -58,6 +58,8 @@ const resetBtn = document.querySelector('.rest-btn')
 const rightBtn = document.getElementById('.right-btn')
 const scoreEl = document.querySelector('.score-board')
 const win = document.querySelector('.win')
+const howToPlayEl = document.querySelector('.how-to-play')
+const questionMarkBtn = document.querySelector('#question-mark-btn')
 
 //! Audio element Refernces
 const foulWhistle = new Audio('../assets/referee-whistle-blow.wav')
@@ -72,6 +74,7 @@ document.getElementById('right-btn').addEventListener('click', changeDirection)
 document.getElementById('down-btn').addEventListener('click', changeDirection)
 document.getElementById('left-btn').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
+questionMarkBtn.addEventListener('click', howToPlay)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -89,18 +92,25 @@ function init(){
   win.style.display = 'none'
   generateSqrElements()
   incrementScoreBoard()
+  reset();
 }
 
+function renderInternal() {
+  moveSnakeHead()
+  generateSqrElements()
+  checkForFood()
+  crashDetection()
+  incrementScoreBoard()
+  changeSpeed()
+  snakeBodyExtension()
+  youWin()
+}
 function render(){
+  console.log(speedVal)
+  clearInterval(moveInterval);
+  renderInternal();
   moveInterval = setInterval(() => {
-    moveSnakeHead()
-    generateSqrElements()
-    checkForFood()
-    crashDetection()
-    incrementScoreBoard()
-    changeSpeed()
-    snakeBodyExtension()
-    youWin()
+    renderInternal();
   }, speedVal);
 }
 
@@ -122,10 +132,11 @@ function generateSqrElements(){
 function renderGameElements(boardObjs){
   sqrEls.forEach((el, idx) => {
     if (boardObjs[idx].food){
-      el.innerHTML = "<img id='food-Ball' src='../assets/ball.png'>"
-      document.querySelector('#food-Ball').style.height = '25px'
-      document.querySelector('#food-Ball').style.width = 'auto'
-    } if (boardObjs[idx].snakeHead){
+      el.classList.add("food-Ball");
+    } else {
+      el.classList.remove("food-Ball");
+    }
+    if (boardObjs[idx].snakeHead){
       el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
       document.querySelector('#kobe').style.height = '40px'
       document.querySelector('#kobe').style.width = 'auto'
@@ -139,12 +150,20 @@ function renderGameElements(boardObjs){
   })
 }
 
+// function removeBounce(){
+//   if (generateSqrElements)
+// }
+
 //! SnakeHead control/generation
 
 function changeDirection(evt){
+  if (boardEl.style.backgroundColor == 'red') {
+    return;
+  }
   if (!moveInterval) {
     render()
   }
+  const prevDirection = currentDirection;
   if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.target.id === 'up-btn' && currentDirection != 's'){
     currentDirection = 'n'
   } else if (evt.key === 'ArrowRight' && currentDirection != 'w' || evt.target.id === 'right-btn' && currentDirection != 'w'){
@@ -153,6 +172,10 @@ function changeDirection(evt){
     currentDirection = 's'
   } else if (evt.key === 'ArrowLeft' && currentDirection != 'e' || evt.target.id === 'left-btn' && currentDirection != 'e'){
     currentDirection = 'w'
+  }
+  if (currentDirection != prevDirection) {
+    render()
+    evt.preventDefault();
   }
 }
 
@@ -165,6 +188,8 @@ function moveSnakeHead(){
     snakeHeadIdx = snakeHeadIdx + 16
   } if (currentDirection === 'w'){
     snakeHeadIdx = snakeHeadIdx - 1
+    // adjust kobe face direction
+    document.querySelector('#kobe').style.transform = 'scaleX(-1)'
   } 
   hitWall()
 }
@@ -199,43 +224,31 @@ function snakeBodyExtension(){
 
 function incrementScoreBoard(){
   scoreBoard = snakeBodyArr.length
-  scoreEl.textContent = `${scoreBoard}`  
+  scoreEl.textContent = `${scoreBoard}`;
   changeSpeed()
 }
 
 function changeSpeed(){
+  const initialSpeed = speedVal;
   if (scoreBoard < 1){
-    clearInterval(moveInterval)
     speedVal = 400
-    render()
   } if (scoreBoard > 4){
-    clearInterval(moveInterval)
     speedVal = 350
-    render()
   } if (scoreBoard > 9){
-    clearInterval(moveInterval)
     speedVal = 300
-    render()
   } if (scoreBoard > 14){
-    clearInterval(moveInterval)
     speedVal = 250
-    render()
   } if (scoreBoard > 19){
-    clearInterval(moveInterval)
     speedVal = 200
-    render()
   } if (scoreBoard > 29){
-    clearInterval(moveInterval)
     speedVal = 150
-    render()
   } if (scoreBoard > 39){
-    clearInterval(moveInterval)
-    speedVal = 100
-    render()
+    speedVal = 125
   } if (scoreBoard > 99){
-    clearInterval(moveInterval)
-    speedVal = 75
-    render()
+    speedVal = 100
+  }
+  if (initialSpeed != speedVal) {
+    // render();
   }
 }
 
@@ -244,13 +257,13 @@ function changeSpeed(){
 function hitWall(){
   if (snakeHeadIdx < 0 || snakeHeadIdx > 255){
     endGame()
-  } if (snakeHeadIdx === 255 || sqrEls[snakeHeadIdx + 1].classList.contains('wWall')) {
+  } else if (snakeHeadIdx === 255 || sqrEls[snakeHeadIdx + 1].classList.contains('wWall')) {
     setTimeout(() => {
       if (currentDirection === 'e') {
         endGame()
       }
     }, speedVal-10)
-  } if (snakeHeadIdx === 0 || sqrEls[snakeHeadIdx - 1].classList.contains('eWall')) {
+  } else if (snakeHeadIdx === 0 || sqrEls[snakeHeadIdx - 1].classList.contains('eWall')) {
     setTimeout(() => {
       if (currentDirection === 'w') {
         endGame()
@@ -260,22 +273,32 @@ function hitWall(){
 }
 
 function crashDetection(){
-  if (boardObjs[snakeHeadIdx].snakeBod) {
+  if (snakeHeadIdx >= 0 && snakeHeadIdx <= 255 && boardObjs[snakeHeadIdx].snakeBod) {
     endGame()
     clearInterval(moveInterval)
-  } return
+  }
 }
 
 function endGame(){
+  const currentHighScore = localStorage.getItem("highScore") || 0;
+  if (scoreBoard > currentHighScore) {
+    localStorage.setItem("highScore", scoreBoard);
+  }
   clearInterval(moveInterval)
   currentDirection = null
+  speedVal = 400
   boardEl.style.backgroundColor = 'red'
   ref.style.display = 'flex'
   foulWhistle.volume = .05
   foulWhistle.play()
+
 }
 
 function reset(){
+  clearInterval(moveInterval);
+  moveInterval = 0;
+  const highScore = localStorage.getItem("highScore");
+  document.querySelector(".high-score").textContent = highScore;
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
   currentDirection = null
@@ -296,3 +319,11 @@ function youWin(){
     clearInterval(moveInterval)
   }
 }
+
+function howToPlay(evt){
+    if (howToPlayEl.style.display === 'none'){
+      howToPlayEl.style.display = 'flex'
+    } else{
+      howToPlayEl.style.display = 'none'
+    }
+  }

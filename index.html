@@ -12,11 +12,29 @@
   <link id="favicon" rel="icon" href="./assets/kobe.png" type="image/png" sizes="32x32">
   <script defer src="./js/app.js"></script>
   <title>Snake</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-33VHB0MFQ0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-33VHB0MFQ0');
+  </script>
 </head>
 
 <body>
+  <div class="how-to-play">
+    <p>Help NBA legend Kobe Bryant, aka, "Black Mamba"  secure as many NBA Championship Trophies as possible without getting a technical foul!
+    <br>
+    <br>
+      How To Play:
+      <br>
+      Use your keyboard arrow keys or the on screen buttons to start the game and change directions. The game will end if you run into a wall or Kobe's trophies.</p>
+  </div>
   <div class="main-container">
     <h1>MAMBA</h1>
+    <button id="question-mark-btn">?</button>
     <section class="game-container">
       <div class="board-num-div">
         <section class="board">
@@ -37,6 +55,8 @@
         <div class="score-div">
           <h2 class="score-sign">SCORE: </h2>
           <h2 class="score-board"></h2>
+          <h2 class="score-sign">High score:</h2>
+          <h2 class="high-score"></h2>
         </div>
       </div>
       <div class="ref">

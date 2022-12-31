@@ -69,6 +69,7 @@ body {
   height: 40px;
   width: 40px;
   z-index: 2;
+  transform: scaleX(1);
 }
 
 #trophy {
@@ -77,10 +78,59 @@ body {
   z-index: 1;
 }
 
-#food-Ball {
+.food-Ball {
   height: 25px;
   width: 25px;
   z-index: 1;
+  /* animation: ballBounce 1s ease-in 0 1 normal both; */
+  animation: 0.3s ease-in ballBounce 1;
+  background: url('../assets/ball.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+@keyframes ballBounce {
+  0% {
+    transform: translateY(-100px);
+  }
+  
+  10% {
+    transform: translateY(-80px);
+  }
+  20% {
+    transform: translateY(-60px);
+  }
+  30% {
+    transform: translateY(-40px);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-20px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.dropIn {
+  animation: ballBounce 1s ease-in 0 1 normal both;
 }
 
 .controller {
@@ -162,7 +212,7 @@ body {
   right: -130px;
 }
 
-.score-board {
+.score-board, .high-score {
   margin: 0;
 }
 
@@ -288,6 +338,26 @@ body {
   bottom: 250px;
 }
 
+.how-to-play {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  margin: 80px 230px;
+  height: 500px;
+  width: 500px;
+  background-color: rgb(75, 133, 234);
+  border-radius: 5%;
+  z-index: 10;
+}
+.how-to-play, p {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+}
 
 
 /* !!!!!!! Mobile phone design !!!!!!! */
