@@ -26,10 +26,10 @@ The image below was the original layout of the game:
 ## Ice Box 🧊
 
 - [ ] Update rematch button
-- [ ] Basketball animations
+- [x] Basketball animations
 - [ ] Kobe face turns on direction change
 - [ ] Difficulty settings
-- [ ] Highscore tracker 
+- [x] Highscore tracker 
 - [ ] Pause function
 - [ ] Additional audio
 

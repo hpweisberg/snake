@@ -91,7 +91,6 @@ body {
 }
 
 
-
 @keyframes ballBounce {
   0% {
     transform: translateY(-100px);
@@ -161,6 +160,27 @@ body {
   cursor: pointer;
 }
 
+#question-mark-btn {
+  display: flex;
+  position: relative;
+  font-family: 'Graduate', cursive;
+  cursor: pointer;
+  font-size: 28px;
+  border-radius: 50%;
+  top: 520px;
+  left: -270px;
+  /* bottom: 340px;
+  left: 85px; */
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(85,37,130);
+  color: antiquewhite;
+  width: 40px;
+  height: 40px;
+  
+}
+
 .background-numbers{
   font-family: 'Graduate', cursive;
   font-size: 150px;
@@ -208,8 +228,8 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 20px;
-  right: -130px;
+  top: 10px;
+  right: -170px;
 }
 
 .score-board, .high-score {
@@ -218,7 +238,7 @@ body {
 
 .score-sign {
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 5px;
 }
 
@@ -339,24 +359,37 @@ body {
 }
 
 .how-to-play {
-  display: flex;
+  display: none;
   position: absolute;
-  justify-content: center;
+  top: 100px;
+  left: 7vw;
+  width: 650px;
+  height: 650px;
   text-align: center;
-  margin: 80px 230px;
-  height: 500px;
-  width: 500px;
-  background-color: rgb(75, 133, 234);
-  border-radius: 5%;
+  justify-content: center;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(92, 80, 103);
+  box-shadow: black 10px 10px 70px;
   z-index: 10;
+  
 }
-.how-to-play, p {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  text-align: center;
+p {
   font-size: 28px;
   padding: 10px;
+  padding-top: 60px;
+  color: rgb(167, 75, 75);
+}
+
+.how-to-play > .ext-how-to-play {
+  display: flex;
+  position: relative;
+  left: 617px;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  color: blue;
+
 }
 
 
@@ -412,22 +445,26 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 300px;
-    left: 140px;
+    top: 340px;
+    left: 100px;
     width: 10%;
     height: 100%;
   }
   
-  .score-board {
+  .score-board, .high-score {
     margin: 0;
-    font-size: 28px;
+    font-size: 20px;
   }
   
   .score-sign {
     display: flex;
     margin-top: 20px;
     margin-bottom: 5px;
-    font-size: 28px;
+    font-size: 20px;
+  }
+
+  .high-score {
+    color: red;
   }
 
   .rest-btn {

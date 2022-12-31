@@ -60,6 +60,8 @@ const scoreEl = document.querySelector('.score-board')
 const win = document.querySelector('.win')
 const howToPlayEl = document.querySelector('.how-to-play')
 const questionMarkBtn = document.querySelector('#question-mark-btn')
+const extHowToPlay = document.querySelector('.ext-how-to-play')
+const darkOverlay = document.querySelector('.dark-overlay')
 
 //! Audio element Refernces
 const foulWhistle = new Audio('../assets/referee-whistle-blow.wav')
@@ -75,6 +77,7 @@ document.getElementById('down-btn').addEventListener('click', changeDirection)
 document.getElementById('left-btn').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
 questionMarkBtn.addEventListener('click', howToPlay)
+extHowToPlay.addEventListener('click', howToPlay)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -92,7 +95,7 @@ function init(){
   win.style.display = 'none'
   generateSqrElements()
   incrementScoreBoard()
-  reset();
+  reset()
 }
 
 function renderInternal() {
@@ -106,12 +109,11 @@ function renderInternal() {
   youWin()
 }
 function render(){
-  console.log(speedVal)
-  clearInterval(moveInterval);
-  renderInternal();
+  clearInterval(moveInterval)
+  renderInternal()
   moveInterval = setInterval(() => {
-    renderInternal();
-  }, speedVal);
+    renderInternal()
+  }, speedVal)
 }
 
 //! Generate/Display sqr elements
@@ -132,9 +134,9 @@ function generateSqrElements(){
 function renderGameElements(boardObjs){
   sqrEls.forEach((el, idx) => {
     if (boardObjs[idx].food){
-      el.classList.add("food-Ball");
+      el.classList.add("food-Ball")
     } else {
-      el.classList.remove("food-Ball");
+      el.classList.remove("food-Ball")
     }
     if (boardObjs[idx].snakeHead){
       el.innerHTML = "<img id='kobe' src='../assets/kobe.png'>"
@@ -157,13 +159,13 @@ function renderGameElements(boardObjs){
 //! SnakeHead control/generation
 
 function changeDirection(evt){
-  if (boardEl.style.backgroundColor == 'red') {
-    return;
+  if (boardEl.style.backgroundColor == 'red' ) {
+    return
   }
   if (!moveInterval) {
     render()
   }
-  const prevDirection = currentDirection;
+  const prevDirection = currentDirection
   if (evt.key === 'ArrowUp' && currentDirection != 's' || evt.target.id === 'up-btn' && currentDirection != 's'){
     currentDirection = 'n'
   } else if (evt.key === 'ArrowRight' && currentDirection != 'w' || evt.target.id === 'right-btn' && currentDirection != 'w'){
@@ -175,7 +177,7 @@ function changeDirection(evt){
   }
   if (currentDirection != prevDirection) {
     render()
-    evt.preventDefault();
+    evt.preventDefault()
   }
 }
 
@@ -224,12 +226,12 @@ function snakeBodyExtension(){
 
 function incrementScoreBoard(){
   scoreBoard = snakeBodyArr.length
-  scoreEl.textContent = `${scoreBoard}`;
+  scoreEl.textContent = `${scoreBoard}`
   changeSpeed()
 }
 
 function changeSpeed(){
-  const initialSpeed = speedVal;
+  const initialSpeed = speedVal
   if (scoreBoard < 1){
     speedVal = 400
   } if (scoreBoard > 4){
@@ -248,7 +250,7 @@ function changeSpeed(){
     speedVal = 100
   }
   if (initialSpeed != speedVal) {
-    // render();
+    // render()
   }
 }
 
@@ -280,9 +282,9 @@ function crashDetection(){
 }
 
 function endGame(){
-  const currentHighScore = localStorage.getItem("highScore") || 0;
+  const currentHighScore = localStorage.getItem("highScore") || 0
   if (scoreBoard > currentHighScore) {
-    localStorage.setItem("highScore", scoreBoard);
+    localStorage.setItem("highScore", scoreBoard)
   }
   clearInterval(moveInterval)
   currentDirection = null
@@ -295,10 +297,10 @@ function endGame(){
 }
 
 function reset(){
-  clearInterval(moveInterval);
-  moveInterval = 0;
-  const highScore = localStorage.getItem("highScore");
-  document.querySelector(".high-score").textContent = highScore;
+  clearInterval(moveInterval)
+  moveInterval = 0
+  const highScore = localStorage.getItem("highScore")
+  document.querySelector(".high-score").textContent = highScore
   snakeHeadIdx = pickRandomSnakeLocation()
   foodItemIdx = generateFoodItem()
   currentDirection = null
@@ -323,7 +325,8 @@ function youWin(){
 function howToPlay(evt){
     if (howToPlayEl.style.display === 'none'){
       howToPlayEl.style.display = 'flex'
-    } else{
+      keyInput = false
+    } else {
       howToPlayEl.style.display = 'none'
     }
   }
