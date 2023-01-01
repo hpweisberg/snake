@@ -627,7 +627,7 @@ p {
   }
 
   .how-to-play {
-    display: flex;
+    display: none;
     position: absolute;
     top: 310px;
     left: 180px;
