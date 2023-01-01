@@ -359,25 +359,24 @@ body {
 }
 
 .how-to-play {
-  display: none;
+  display: flex;
   position: absolute;
-  top: 100px;
-  left: 7vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 650px;
   height: 650px;
-  text-align: center;
-  justify-content: center;
   border: 1px solid rgb(255, 255, 255);
-  background-color: rgb(92, 80, 103);
+  background-color: rgb(114, 87, 139);
   box-shadow: black 10px 10px 70px;
   z-index: 10;
-  
+
 }
 p {
   font-size: 28px;
   padding: 10px;
   padding-top: 60px;
-  color: rgb(167, 75, 75);
+  color: rgb(0, 0, 0);
 }
 
 .how-to-play > .ext-how-to-play {
@@ -588,5 +587,39 @@ p {
     bottom: 300px;
     left: 190px;
     text-shadow: 7px 7px 10px rgb(0, 0, 0);
+  }
+
+  .how-to-play {
+    display: flex;
+    position: absolute;
+    top: 100px;
+    left: 7vw;
+    width: 650px;
+    height: 650px;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(92, 80, 103);
+    box-shadow: black 10px 10px 70px;
+    z-index: 10;
+    
+  }
+  p {
+    font-size: 28px;
+    padding: 10px;
+    padding-top: 60px;
+    color: rgb(167, 75, 75);
+  }
+  
+  .how-to-play > .ext-how-to-play {
+    display: flex;
+    position: relative;
+    left: 617px;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    color: blue;
+  
   }
 }
