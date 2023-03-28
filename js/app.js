@@ -78,6 +78,7 @@ document.getElementById('left-btn').addEventListener('click', changeDirection)
 resetBtn.addEventListener('click', reset)
 questionMarkBtn.addEventListener('click', howToPlay)
 extHowToPlay.addEventListener('click', howToPlay)
+extHowToPlay.addEventListener('click', extHelp)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -322,11 +323,28 @@ function youWin(){
   }
 }
 
+let displayHelp = false
+
 function howToPlay(evt){
-    if (howToPlayEl.style.display === 'none'){
+  displayHelp != false 
+  if (displayHelp == false){
+    howToPlayEl.style.display == 'flex'
+  } else {
+    howToPlayEl.style.display == 'none'
+  }
+}
+
+function howToPlay(evt){
+    if (howToPlayEl.style.display == 'none'){
       howToPlayEl.style.display = 'flex'
       keyInput = false
+      console.log(1)
     } else {
       howToPlayEl.style.display = 'none'
+      console.log(2)
     }
+  }
+
+  function extHelp(evt){
+    howToPlayEl.style.display = 'none'
   }

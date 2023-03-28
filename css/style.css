@@ -403,6 +403,7 @@ p {
   color: rgb(0, 0, 0);
 }
 
+
 .how-to-play > .ext-how-to-play {
   display: flex;
   position: relative;
@@ -412,6 +413,15 @@ p {
   height: 40px;
   width: 80px;
   color: blue;
+}
+
+p > a {
+  color: rgb(58, 58, 58);
+  font-size: 29px;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 
@@ -642,10 +652,19 @@ p {
   }
 
   p {
-    font-size: 20px;
+    font-size: 19px;
     padding: 10px;
     padding-top: 45px;
     color: rgb(0, 0, 0);
+  }
+
+  p > a {
+    color: rgb(58, 58, 58);
+    font-size: 22px;
+  }
+
+  a:hover {
+    cursor: pointer;
   }
   
   .how-to-play > .ext-how-to-play {
