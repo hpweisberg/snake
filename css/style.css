@@ -678,4 +678,9 @@ a:hover {
     color: blue;
   
   }
+
+  body { 
+    touch-action: manipulation; 
+  }
+
 }
