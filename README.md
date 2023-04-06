@@ -32,6 +32,7 @@ The image below was the original layout of the game:
 - [x] Highscore tracker 
 - [ ] Pause function
 - [ ] Additional audio
+- [x] Double tap to zoom disabled
 
 ## Credits 🙌
 
@@ -39,7 +40,9 @@ Special thanks to @jemware for the button design.
 
 ## Known Bugs 🛠️
 
-- Sound loop on body crash after using Rematch button
-- Flashing snake head on mobile
+- [FIXED] Flashing snake head on mobile
 - [FIXED] Sqr #255 detection issue 
 - [FIXED] Mobile button showing emojis
+- [FIXED] Mobile controller not responding to clicks directly right of arrows
+- [FIXED] Button press not displayed on mobile
+- Sound loop on body crash after using Rematch button
