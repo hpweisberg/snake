@@ -679,8 +679,9 @@ a:hover {
   
   }
 
-  body { 
-    touch-action: manipulation; 
-  }
 
+}
+
+body { 
+  touch-action: manipulation; 
 }
